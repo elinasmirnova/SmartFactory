@@ -13,7 +13,7 @@ public class Queue {
 
     public static Queue instanceQueue;
 
-    //singleton: repairmen pool must be only one
+    //singleton: queue must be only one
     public static Queue getInstance() {
         if (instanceQueue == null) {
             instanceQueue = new Queue();
