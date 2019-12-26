@@ -3,17 +3,17 @@ package impl.repairman;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RepairmentStatus {
+public class RepairStatus {
     private List<Repairman> available = new ArrayList<Repairman>();
     private List<Repairman> working = new ArrayList<Repairman>();
 
-    public static RepairmentStatus instance;
+    public static RepairStatus instance;
 
 
     //singleton: repairmen pool must be only one
-    public static RepairmentStatus getInstance() {
+    public static RepairStatus getInstance() {
         if (instance == null) {
-            instance = new RepairmentStatus();
+            instance = new RepairStatus();
         }
         return instance;
     }

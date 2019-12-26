@@ -1,6 +1,7 @@
 package impl.repairman;
 
 import impl.*;
+import impl.events.Event;
 import impl.lineItems.Machine;
 
 public class Repairman {
@@ -19,7 +20,15 @@ public class Repairman {
         System.out.println("Start fixing the machine number " + (String)machine.getId());
         machine.setCondition(100);
         System.out.println("Machine "+ (String)machine.getId() + " fixed");
+        machine.setState("Normal");
     }
+
+    //simulate fixing process
+    public void simulateFixing(Machine machine){
+        machine.setState("Under repair");
+    }
+
+
 
 
 
