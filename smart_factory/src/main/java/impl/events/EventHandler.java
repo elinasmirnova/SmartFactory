@@ -1,5 +1,7 @@
 package impl.events;
 
+import impl.repairman.Queue;
+import impl.repairman.RepairHandler;
 import impl.repairman.Repairman;
 import impl.repairman.RepairStatus;
 
@@ -9,6 +11,13 @@ public class EventHandler {
 
     private LinkedList<Event> eventQueue = new LinkedList<Event>();
     private RepairStatus repairmen = RepairStatus.getInstance();
+    private Queue queue = Queue.getInstance();
+    private RepairHandler repairHandler = new RepairHandler();
+
+    //time spent on fixing the machine
+    private int timeToFix = 0;
+
+
 
     public static EventHandler instance;
 
@@ -33,10 +42,24 @@ public class EventHandler {
             //get the oldest event from the list
             Event event = eventQueue.removeFirst();
             if (event.getType().equals("Breakdown")){
+                System.out.println("Got breakdown event");
                 BreakdownEvent breakdownEvent = (BreakdownEvent) event;
-                Repairman repairman = repairmen.getRepairman();
-                repairman.simulateFixing(breakdownEvent.getMachine());
-                System.out.println(breakdownEvent.getMachine() + " is under repair");
+                queue.machineQueue.add(breakdownEvent.getMachine());
+                repairHandler.startRepair();
+
+            }
+            else if (event.getType().equals("Start repair")){
+                System.out.println("Got start repair event ");
+                StartRepairEvent startRepairEvent = (StartRepairEvent) event;
+                //increases every tick
+                timeToFix += 1;
+                //when equals to time needed to fix the machine --> stop
+                if (startRepairEvent.getMachine().getRepairTime() == timeToFix) {
+                    repairHandler.repair(startRepairEvent.getMachine());
+                    timeToFix = 0;
+                }
+
+
             }
         }
     }

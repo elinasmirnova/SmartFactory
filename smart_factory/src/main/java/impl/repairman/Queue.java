@@ -9,7 +9,7 @@ public class Queue {
     //should be fifo
     //Probably a LinkedList using add (adds one to the end) --> add machine
     //and removeFirst (removes one from the front and returns it) --> get the oldest(earliest)
-    LinkedList<Machine> queue = new LinkedList<Machine>();
+    public LinkedList<Machine> machineQueue = new LinkedList<Machine>();
 
     public static Queue instanceQueue;
 
@@ -24,7 +24,7 @@ public class Queue {
     //get the earliest machine from the queue
     public Machine getMachineFromQueue(){
         System.out.println("Getting the machine for the repairment...");
-        return queue.removeFirst();
+        return machineQueue.removeFirst();
     }
 
 }

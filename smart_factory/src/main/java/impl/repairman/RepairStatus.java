@@ -34,7 +34,7 @@ public class RepairStatus {
     }
 
     //when the machine is fixed return the repairman to the available list
-    public void finishRepairment(Repairman repairman){
+    public void finishRepair(Repairman repairman){
         available.add(repairman);
         working.remove(repairman);
 
