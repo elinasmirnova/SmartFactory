@@ -17,7 +17,7 @@ public class Line extends FactoryBuilder1 {
     }
 
     public void accept(Visitor visitor) {
-
+        visitor.visit(this);
     }
 
 

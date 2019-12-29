@@ -1,5 +1,6 @@
 package impl.repairman;
 
+import impl.enums.MachineState;
 import impl.lineItems.Machine;
 
 public class RepairHandler {
@@ -18,7 +19,7 @@ public class RepairHandler {
             if (repairman != null){
                 repairman.simulateFixing(brokenMachine);
                 System.out.println(brokenMachine.getId() + " is ready to be fixed");
-                brokenMachine.setState(UNDER_REPAIR);
+                brokenMachine.setState(MachineState.UNDER_REPAIR);
             }
 
         }
@@ -26,10 +27,10 @@ public class RepairHandler {
     }
 
     public void repair(Machine machine){
-        System.out.println("Start fixing the machine number " + (String)machine.getId());
+        System.out.println("Start fixing the machine number " + machine.getId());
         machine.setCondition(100);
-        System.out.println("Machine "+ (String)machine.getId() + " fixed");
-        machine.setState(NORMAL);
+        System.out.println("Machine "+ machine.getId() + " fixed");
+        machine.setState(MachineState.WORKING);
         repairmen.finishRepair(repairman);
     }
 }
