@@ -1,5 +1,11 @@
 package impl;
 
+import impl.lineItems.LineItem;
+import impl.lineItems.Machine;
+import impl.visitor.Inspector;
+import impl.visitor.Manager;
+import impl.visitor.Visitor;
+
 import java.util.List;
 
 public class Factory implements Entity{
@@ -28,9 +34,29 @@ public class Factory implements Entity{
 
     @Override
     public void accept(Visitor visitor) {
+        if (visitor instanceof Inspector) {
+            acceptInspector(visitor);
+        } else {
+            acceptManager(visitor);
+        }
+    }
+
+    public void acceptManager(Visitor visitor) {
         visitor.visit(this);
         for (Line line : lines) {
-            visitor.visit(line);
+            line.accept(visitor);
+            for (LineItem lineItem : line.getSequence()) {
+                lineItem.accept(visitor);
+            }
         }
+    }
+
+    public void acceptInspector(Visitor visitor) {
+        for (Line line: lines) {
+            for (LineItem machine : line.sortByCondition()){
+                machine.accept(visitor);
+            }
+        }
+
     }
 }

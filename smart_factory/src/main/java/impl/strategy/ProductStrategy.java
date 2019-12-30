@@ -1,11 +1,13 @@
 package impl.strategy;
 
+import impl.lineItems.LineItem;
+
 import java.util.List;
 
 public interface ProductStrategy {
 
     void createProduct();
 
-    List<String> getSequence();
+    List<LineItem> getSequence();
 
 }

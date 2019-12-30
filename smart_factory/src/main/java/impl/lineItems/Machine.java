@@ -1,6 +1,6 @@
 package impl.lineItems;
 
-import impl.Visitor;
+import impl.visitor.Visitor;
 import impl.enums.MachineState;
 
 public abstract class Machine extends LineItem{

@@ -1,6 +1,6 @@
 package impl.lineItems;
 
-import impl.Visitor;
+import impl.visitor.Visitor;
 
 public class MachineFactory extends LineItem{
 
