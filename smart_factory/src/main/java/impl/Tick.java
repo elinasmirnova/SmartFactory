@@ -1,5 +1,5 @@
 package impl;
 
-public interface Tick {
+public class Tick {
 
 }

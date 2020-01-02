@@ -2,18 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="event handler added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/JsonConfig.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Entity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Entity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Inspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder1.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Tick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Tick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/MachineFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/MachineFactory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/ChairStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/ChairStrategy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/ProductStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/ProductStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/TableStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/TableStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/WardrobeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/WardrobeStrategy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -27,8 +38,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>

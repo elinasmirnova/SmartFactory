@@ -9,7 +9,9 @@ import impl.visitor.Visitor;
 import java.util.List;
 
 public class Factory implements Entity{
+
     private String name;
+    private static Factory instance = null;
     private List<Line> lines;
 
     public Factory(String name) {
@@ -30,6 +32,13 @@ public class Factory implements Entity{
 
     public void setLines(List<Line> lines) {
         this.lines = lines;
+    }
+
+    public static Factory getInstance(String name) {
+        if (instance == null) {
+            instance = new Factory(name);
+        }
+        return instance;
     }
 
     @Override

@@ -2,11 +2,24 @@ package impl.lineItems;
 
 import impl.visitor.Visitor;
 
-public class Worker {
+public class Worker extends LineItem{
 
-    private int materialConsumption;
     private int salary;
     private String name;
+
+    public Worker(String id, String name, int salary) {
+        super(id);
+        this.name = name;
+        this.salary = salary;
+    }
+
+    @Override
+    protected void work() {
+        if (getNextLineItem() == null) {
+            System.out.println("The product is done");
+        }
+        getNextLineItem().work();
+    }
 
     public void accept(Visitor visitor) {
         visitor.visit(this);

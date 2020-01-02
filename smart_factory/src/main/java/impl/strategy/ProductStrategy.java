@@ -6,8 +6,8 @@ import java.util.List;
 
 public interface ProductStrategy {
 
-    void createProduct();
+    void setLineItems();
 
-    List<LineItem> getSequence();
+    List<String> getSequence();
 
 }
