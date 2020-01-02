@@ -5,11 +5,11 @@ import impl.visitor.Visitor;
 public class Worker extends LineItem{
 
     private int salary;
-    private String name;
+
+    private final int typeId = 1;
 
     public Worker(String id, String name, int salary) {
-        super(id);
-        this.name = name;
+        super(id, name);
         this.salary = salary;
     }
 
@@ -25,11 +25,4 @@ public class Worker extends LineItem{
         visitor.visit(this);
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
 }

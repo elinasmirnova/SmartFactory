@@ -13,6 +13,7 @@ public class Factory implements Entity{
     private String name;
     private static Factory instance = null;
     private List<Line> lines;
+    private int tick = 0;
 
     public Factory(String name) {
         this.name = name;
@@ -67,5 +68,13 @@ public class Factory implements Entity{
             }
         }
 
+    }
+
+    public int getTick() {
+        return tick;
+    }
+
+    public void setTick(int tick) {
+        this.tick = tick;
     }
 }

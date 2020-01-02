@@ -2,29 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="event handler added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/impl/JsonConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/Report.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder1.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder2.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Tick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Tick.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/MachineFactory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/MachineFactory.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/ChairStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/ChairStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/ProductStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/ProductStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/TableStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/TableStrategy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/WardrobeStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/WardrobeStrategy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,7 +47,9 @@
     <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="ProjectId" id="1UfEXEu7Eo1VJ2govVreqjmsqJY" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -82,6 +83,25 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="impl.products in smart_factory" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="smart_factory" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="impl.products.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="impl.products" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />

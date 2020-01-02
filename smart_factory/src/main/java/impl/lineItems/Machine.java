@@ -16,6 +16,7 @@ public abstract class Machine extends LineItem{
     private int electricityConsumption;
     private int repairTime;
     //private int materialConsumption;
+    private final int typeId = 0;
 
     public Machine(String id) {
         super(id);
@@ -51,6 +52,8 @@ public abstract class Machine extends LineItem{
 
     //must have int repairTime !!!
 
+    abstract public int getOil();
+
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -69,4 +72,7 @@ public abstract class Machine extends LineItem{
 
     }
 
+    public abstract int getEC();
+
+    public abstract int getMat();
 }
