@@ -1,24 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="" />
+    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="event handler added">
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/Report.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
+  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
   </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+    <option name="RESET_MODE" value="HARD" />
+  </component>
   <component name="ProjectId" id="1UfEXEu7Eo1VJ2govVreqjmsqJY" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../../../smart-factory/SmartFactoryImpl" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -48,6 +84,25 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="impl.products in smart_factory" type="JUnit" factoryName="JUnit" nameIsGenerated="true">
+      <module name="smart_factory" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="impl.products.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="impl.products" />
+      <option name="MAIN_CLASS_NAME" value="" />
+      <option name="METHOD_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <option name="PARAMETERS" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -65,10 +120,52 @@
       <workItem from="1576244557350" duration="4959000" />
       <workItem from="1576437076111" duration="32000" />
       <workItem from="1576437119868" duration="359000" />
+      <workItem from="1577462634257" duration="11666000" />
     </task>
+    <task id="LOCAL-00001" summary="basic event">
+      <created>1577290266618</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1577290266618</updated>
+    </task>
+    <task id="LOCAL-00002" summary="breakdown event">
+      <created>1577359375764</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1577359375764</updated>
+    </task>
+    <task id="LOCAL-00003" summary="event handler added">
+      <created>1577359497289</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1577359497289</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="basic event" />
+    <MESSAGE value="breakdown event" />
+    <MESSAGE value="event handler added" />
+    <option name="LAST_COMMIT_MESSAGE" value="event handler added" />
   </component>
 </project>

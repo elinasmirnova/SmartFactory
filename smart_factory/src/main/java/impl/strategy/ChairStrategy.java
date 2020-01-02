@@ -1,21 +1,17 @@
 package impl.strategy;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import impl.Line;
+import impl.enums.MachineType;
+import impl.lineItems.*;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 public class ChairStrategy implements ProductStrategy  {
 
-    private List<String> sequence = new ArrayList<>(Arrays.asList("machine1", "worker1"));
+    private List<String> sequence = new ArrayList<>(Arrays.asList("Saw", "Worker", "Lathe", "Sander", "Worker"));
 
-    @Override
-    public void createProduct() {
-        System.out.println("Chairs production is in progress");
-    }
-
-    @Override
-    public List<String> getSequence() {
-        return sequence;
+    public ChairStrategy() {
     }
 
 }
