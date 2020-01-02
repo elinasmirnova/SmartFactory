@@ -4,9 +4,9 @@ import impl.enums.MachineState;
 import impl.lineItems.Machine;
 
 public class RepairHandler {
-    private RepairStatus repairmen = RepairStatus.getInstance();
-    private Queue queue = Queue.getInstance();
-    private Repairman repairman = repairmen.getRepairman();
+    public RepairStatus repairmen = RepairStatus.getInstance();
+    public Queue queue = Queue.getInstance();
+    public Repairman repairman = repairmen.getRepairman();
 
     public void startRepair(){
         if (queue.machineQueue == null){
@@ -19,7 +19,7 @@ public class RepairHandler {
             if (repairman != null){
                 repairman.simulateFixing(brokenMachine);
                 System.out.println(brokenMachine.getId() + " is ready to be fixed");
-                brokenMachine.setState(MachineState.UNDER_REPAIR);
+//                brokenMachine.setState(MachineState.UNDER_REPAIR);
             }
 
         }

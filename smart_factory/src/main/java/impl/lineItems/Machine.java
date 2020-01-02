@@ -9,6 +9,13 @@ public abstract class Machine extends LineItem{
     private MachineState state;
     private int electricityConsumption;
     private int materialConsumption;
+    private int repairTime;
+
+    public Machine(MachineState state, int condition, int repairTime){
+        this.state = state;
+        this.condition = condition;
+        this.repairTime = repairTime;
+    }
 
     public int getCondition() {
         return condition;
@@ -24,6 +31,14 @@ public abstract class Machine extends LineItem{
 
     public void setState(MachineState state) {
         this.state = state;
+    }
+
+    public int getRepairTime() {
+        return repairTime;
+    }
+
+    public void setRepairTime(int repairTime) {
+        this.repairTime = repairTime;
     }
 
     // time = TickManager.getInstance().getCurrentTime()

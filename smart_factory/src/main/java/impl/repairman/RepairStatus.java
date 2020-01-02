@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class RepairStatus {
-    private List<Repairman> available = new ArrayList<Repairman>();
-    private List<Repairman> working = new ArrayList<Repairman>();
+    public List<Repairman> available = new ArrayList<Repairman>();
+    public List<Repairman> working = new ArrayList<Repairman>();
 
     public static RepairStatus instance;
 

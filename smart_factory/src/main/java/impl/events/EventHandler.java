@@ -61,6 +61,11 @@ public class EventHandler {
 
 
             }
+
+            else if (event.getType().equals("Finish repair")){
+                FinishRepairEvent finishRepairEvent = (FinishRepairEvent) event;
+                System.out.println("Machine was fixed");
+            }
         }
     }
 

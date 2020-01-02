@@ -4,6 +4,8 @@ import impl.*;
 import impl.events.Event;
 import impl.lineItems.Machine;
 
+import static impl.enums.MachineState.UNDER_REPAIR;
+
 public class Repairman {
     private int id;
     private boolean available;
@@ -23,10 +25,10 @@ public class Repairman {
 //        machine.setState("Normal");
 //    }
 //
-//    //simulate fixing process
-//    public void simulateFixing(Machine machine){
-//        machine.setState("Under repair");
-//    }
+    //simulate fixing process
+    public void simulateFixing(Machine machine){
+        machine.setState(UNDER_REPAIR);
+    }
 
 
 

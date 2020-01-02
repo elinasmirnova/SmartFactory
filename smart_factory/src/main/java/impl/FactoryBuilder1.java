@@ -16,8 +16,8 @@ public class FactoryBuilder1 implements Builder{
     @Override
     public void createLines() {
         //setStrategy() on Line
-        Line line = new Line();
-        line.startProduction(new ChairStrategy());
+//        Line line = new Line();
+//        line.startProduction(new ChairStrategy());
     }
 
     @Override
