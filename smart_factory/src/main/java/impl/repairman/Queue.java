@@ -13,7 +13,11 @@ public class Queue {
 
     public static Queue instanceQueue;
 
-    //singleton: queue must be only one
+
+    /***
+     * get one and the same instance of Queue, using the Singleton pattern
+     * @return  the instance of Queue
+     */
     public static Queue getInstance() {
         if (instanceQueue == null) {
             instanceQueue = new Queue();
@@ -21,7 +25,10 @@ public class Queue {
         return instanceQueue;
     }
 
-    //get the earliest machine from the queue
+    /***
+     *
+     * @return the earliest machine from the queue
+     */
     public Machine getMachineFromQueue(){
         System.out.println("Getting the machine for the repairment...");
         return machineQueue.removeFirst();

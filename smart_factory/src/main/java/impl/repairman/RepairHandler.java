@@ -8,6 +8,9 @@ public class RepairHandler {
     public Queue queue = Queue.getInstance();
     public Repairman repairman = repairmen.getRepairman();
 
+    /***
+     * start the repair of a broken machine from the queue if it's not empty
+     */
     public void startRepair(){
         if (queue.machineQueue == null){
             System.out.println("There are no broken machines in queue");
@@ -26,6 +29,10 @@ public class RepairHandler {
 
     }
 
+    /***
+     * repairs the broken machine and returns the repairman to available list
+     * @param machine a broken machine needs to be repaired
+     */
     public void repair(Machine machine){
         System.out.println("Start fixing the machine number " + machine.getId());
         machine.setCondition(100);

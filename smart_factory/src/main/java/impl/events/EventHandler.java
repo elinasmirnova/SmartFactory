@@ -17,12 +17,13 @@ public class EventHandler {
     //time spent on fixing the machine
     private int timeToFix = 0;
 
-
-
     public static EventHandler instance;
 
 
-    //singleton
+    /***
+     * get one and the same instance of EventHandler, using the Singleton pattern
+     * @return  the instance of EventHandler
+     */
     public static EventHandler getInstance() {
         if (instance == null) {
             instance = new EventHandler();
@@ -30,10 +31,17 @@ public class EventHandler {
         return instance;
     }
 
+    /***
+     * add event to eventQueue
+     * @param event received event
+     */
     public void addEvent(Event event) {
         eventQueue.add(event);
     }
 
+    /***
+     * handle events by event type after receiving
+     */
     public void handle(){
         if (eventQueue.isEmpty()){
             System.out.println("There are no events to handle");

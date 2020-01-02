@@ -13,7 +13,10 @@ public class Repairman {
         this.available = available;
     }
 
-    //simulate fixing process
+    /***
+     * simulate the start of the repair process
+     * @param machine the broken machine
+     */
     public void simulateFixing(Machine machine){
         machine.setState(UNDER_REPAIR);
     }
