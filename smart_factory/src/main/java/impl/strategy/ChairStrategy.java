@@ -14,4 +14,13 @@ public class ChairStrategy implements ProductStrategy  {
     public ChairStrategy() {
     }
 
+    @Override
+    public void setLineItems() {
+
+    }
+
+    @Override
+    public List<String> getSequence() {
+        return null;
+    }
 }

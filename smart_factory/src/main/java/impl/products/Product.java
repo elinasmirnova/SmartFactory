@@ -1,10 +1,8 @@
 package impl.products;
 
-/**
- * Product
- */
 public abstract class Product {
     private int id;
+    abstract public int getUnitsPerTick();
 
     public Product(int id) {
         this.id = id;
@@ -15,4 +13,5 @@ public abstract class Product {
     public int getId() {
         return id;
     }
+
 }

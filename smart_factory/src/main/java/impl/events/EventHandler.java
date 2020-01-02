@@ -1,5 +1,8 @@
 package impl.events;
 
+import impl.Entity;
+import impl.Observer;
+import impl.Tick;
 import impl.repairman.Queue;
 import impl.repairman.RepairHandler;
 import impl.repairman.Repairman;
@@ -7,20 +10,21 @@ import impl.repairman.RepairStatus;
 
 import java.util.LinkedList;
 
-public class EventHandler {
+public class EventHandler implements Observer {
 
     private LinkedList<Event> eventQueue = new LinkedList<Event>();
     private RepairStatus repairmen = RepairStatus.getInstance();
     private Queue queue = Queue.getInstance();
     private RepairHandler repairHandler = new RepairHandler();
+    private Tick tick = Tick.getInstance();
 
     //time spent on fixing the machine
     private int timeToFix = 0;
-
-
-
     public static EventHandler instance;
 
+    public EventHandler() {
+        tick.attach(this);
+    }
 
     //singleton
     public static EventHandler getInstance() {
@@ -44,7 +48,7 @@ public class EventHandler {
             if (event.getType().equals("Breakdown")){
                 System.out.println("Got breakdown event");
                 BreakdownEvent breakdownEvent = (BreakdownEvent) event;
-                queue.machineQueue.add(breakdownEvent.getMachine());
+                queue.getMachineQueue().add(breakdownEvent.getMachine());
                 repairHandler.startRepair();
 
             }
@@ -62,6 +66,10 @@ public class EventHandler {
 
             }
         }
+    }
+
+    public void update() {
+        this.handle();
     }
 
 

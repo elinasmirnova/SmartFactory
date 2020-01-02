@@ -20,6 +20,11 @@ public class Lathe extends Machine {
     }
 
     @Override
+    public void update() {
+
+    }
+
+    @Override
     public int getOil() {
         return oil;
     }

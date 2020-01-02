@@ -1,5 +1,6 @@
 package impl.lineItems;
 
+import impl.products.Product;
 import impl.visitor.Visitor;
 
 public class Worker extends LineItem{
@@ -14,11 +15,11 @@ public class Worker extends LineItem{
     }
 
     @Override
-    protected void work() {
+    public void work(Product product) {
         if (getNextLineItem() == null) {
             System.out.println("The product is done");
         }
-        getNextLineItem().work();
+        getNextLineItem().work(product);
     }
 
     public void accept(Visitor visitor) {

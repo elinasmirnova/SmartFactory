@@ -11,7 +11,7 @@ import java.util.List;
 
 public class FactoryBuilder implements Builder{
 
-    private Factory factory;
+    private Factory factory = Factory.getInstance("factory1");
     private MachineFactory machineFactory;
     private ProductStrategy strategy;
     private List<LineItem> availableLineItems;

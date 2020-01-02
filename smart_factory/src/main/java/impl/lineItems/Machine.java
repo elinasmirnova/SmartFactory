@@ -1,12 +1,17 @@
 package impl.lineItems;
 
+import impl.Line;
+import impl.Observer;
 import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
+import impl.events.FinishRepairEvent;
+import impl.events.StartRepairEvent;
+import impl.products.Product;
 import impl.repairman.Queue;
 import impl.visitor.Visitor;
 import impl.enums.MachineState;
 
-public abstract class Machine extends LineItem{
+public abstract class Machine extends LineItem implements Observer {
 
     private int condition = 100;
     private MachineState state = MachineState.WORKING;
@@ -15,6 +20,7 @@ public abstract class Machine extends LineItem{
     //private int totalConsumption;
     private int electricityConsumption;
     private int repairTime;
+    private Line line;
     //private int materialConsumption;
     private final int typeId = 0;
 
@@ -38,39 +44,49 @@ public abstract class Machine extends LineItem{
         this.state = state;
     }
 
-    // time = TickManager.getInstance().getCurrentTime()
-
-    //enum states? NORMAL, BROKEN, UNDER_REPAIR
-
-    //add events to the eventQueue
-
-    //if (machine.getState().equals(BROKEN){
-    //getEventHandler().addEvent(new BrokenEvent("Breakdown",time,getMachine()));
-    // add the machine to queue of broken machines} ...
-
-    //if state is UNDER_REPAIR --> create new event StartRepairEvent()
-
-    //must have int repairTime !!!
-
     abstract public int getOil();
 
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
 
-    public void work() {
+    @Override
+    public void work(Product product) {
+
         if (getNextLineItem() == null) {
             System.out.println("The product is done");
         }
-        condition -= 5;
+        System.out.println(getId() + " now is working on" + product.getName() + "with id" + product.getId()) ;
+        condition -= 10;
         if (condition < 10) {
             setState(MachineState.BROKEN);
-            //eventHandler.addEvent(new BreakdownEvent("Breakdown"), time, getId());
-            //brokenMachines. ADD
+            eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
+            brokenMachines.getMachineQueue().add(this);
         }
-        getNextLineItem().work();
+        getNextLineItem().work(product);
 
     }
 
     public abstract int getEC();
+
+
+    public int getRepairTime() {
+        return repairTime;
+    }
+
+    @Override
+    public void update() {
+        if (getState().equals(MachineState.UNDER_REPAIR)) {
+            eventHandler.addEvent(new StartRepairEvent("Start Repair", this));
+
+        } else if (getState().equals(MachineState.AFTER_REPAIR) ) {
+            eventHandler.addEvent(new FinishRepairEvent("Finish Repair", this));
+            // continue production on this line
+            this.setState(MachineState.WORKING);
+        }
+    }
+
+
+
+
 }

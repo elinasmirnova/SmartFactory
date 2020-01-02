@@ -6,28 +6,47 @@ import impl.products.Product;
 import impl.strategy.ProductStrategy;
 import impl.visitor.Visitor;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class Line {
+public class Line implements Observer{
 
     private ProductStrategy strategy;
 
     private int id;
-    private Product product;
     private List<LineItem> workingItems = new ArrayList<>();
     private List<LineItem> availableLineItems;
+    private Tick tick = Tick.getInstance();
+    private Product currentProduct;
+    private int tickCounter = 0;
+    private boolean isWorking;
 
-    public Line(int id, List<LineItem> availableLineItems) {
+    public Line(int id, List<LineItem> availableLineItems, Product product) {
         this.id = id;
         this.availableLineItems = availableLineItems;
+        currentProduct = product;
+        isWorking = true;
+        tick.attach(this);
     }
 
-    public void startProduction() {
-        strategy.setLineItems();
+    public void startProduction(Product product) {
+        this.setLineItems();
+        workingItems.forEach(i -> i.work(product));
+    }
+
+    @Override
+    public void update() {
+      if (currentProduct.getName().startsWith("Chair")) {
+            Factory.chairs += currentProduct.getUnitsPerTick();
+      } else if (currentProduct.getName().startsWith("Table")) {
+          Factory.tables += currentProduct.getUnitsPerTick();
+      } else if (currentProduct.getName().startsWith("Wardrobe")) {
+          Factory.wardrobes += currentProduct.getUnitsPerTick();
+      }
+    }
+
+    public void reorderLineItems() {
+        //TODO
     }
 
     public void setLineItems() {
@@ -43,9 +62,9 @@ public class Line {
         return item;
     }
 
-    public void setStrategy(ProductStrategy strategy) {
-        this.strategy = strategy;
-    }
+//    public void setStrategy(ProductStrategy strategy) {
+//        this.strategy = strategy;
+//    }
 
     public void accept(Visitor visitor) {
         visitor.visit(this);
@@ -59,19 +78,10 @@ public class Line {
         this.id = id;
     }
 
-    public Product getProduct() {
-        return product;
-    }
-
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public List<Machine> getMachines() {
-        List<LineItem> all = this.workingItems;
+    private List<Machine> getMachines(List<LineItem> all) {
         List<Machine> machines = new ArrayList<Machine>();
         for (LineItem item : all) {
-            if (item.getTypeId() == 0) {
+            if (item instanceof Machine) {
                 machines.add((Machine) item);
             }
         }
@@ -80,7 +90,7 @@ public class Line {
 
     public List<Machine> sortByCondition() {
 
-        List<Machine> machines = getMachines();
+        List<Machine> machines = getMachines(workingItems);
         Collections.sort(machines, new Comparator<Machine>() {
             @Override
             public int compare(Machine o1, Machine o2) {
@@ -90,43 +100,26 @@ public class Line {
         return machines;
     }
 
-    public int getTotalOil() {
-        List<Machine> machines = getMachines();
-        int totalOil = 0;
-        for (Machine machine:machines) {
-            totalOil += machine.getOil();
-        }
-        return totalOil;
-    }
-
-    public int getTotalEC() {
-        List<Machine> machines = getMachines();
-        int totalEC = 0;
-        for (Machine machine:machines) {
-            totalEC += machine.getEC();
-        }
-        return totalEC;
-    }
-
-    public int getTotalMat() {
-        List<Machine> machines = getMachines();
-        int totalMat = 0;
-        for (Machine machine:machines) {
-            totalMat += machine.getMat();
-        }
-        return totalMat;
-    }
-
-    public List<LineItem> getSequence() {
+    public List<LineItem> getWorkingItems() {
         return workingItems;
     }
 
     public void addWorkingItem(LineItem item) {
         workingItems.add(item);
+        LineItem next = null;
+        Iterator<LineItem> iter = workingItems.iterator();
+        for (int i = 0; i < workingItems.size(); i++) {
+            LineItem current = workingItems.get(i);
+            if(iter.hasNext()) {
+                current.setNextLineItem(iter.next());
+            }
+        }
+
     }
 
     public ProductStrategy getStrategy() {
         return strategy;
     }
+
 
 }

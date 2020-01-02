@@ -13,10 +13,10 @@ public class Factory implements Entity{
     private String name;
     private static Factory instance = null;
     private List<Line> lines;
-    private int tick = 0;
-    private int chairs = 0;
-    private int tables = 0;
-    private int wardrobes = 0;
+    private static int tick = 0;
+    public static int chairs = 0;
+    public static int tables = 0;
+    public static int wardrobes = 0;
 
     public Factory(String name) {
         this.name = name;
@@ -58,7 +58,7 @@ public class Factory implements Entity{
         visitor.visit(this);
         for (Line line : lines) {
             line.accept(visitor);
-            for (LineItem lineItem : line.getSequence()) {
+            for (LineItem lineItem : line.getWorkingItems()) {
                 lineItem.accept(visitor);
             }
         }

@@ -1,6 +1,7 @@
 package impl.repairman;
 
 import impl.*;
+import impl.enums.MachineState;
 import impl.events.Event;
 import impl.lineItems.Machine;
 
@@ -24,9 +25,9 @@ public class Repairman {
 //    }
 //
 //    //simulate fixing process
-//    public void simulateFixing(Machine machine){
-//        machine.setState("Under repair");
-//    }
+    public void simulateFixing(Machine machine){
+        machine.setState(MachineState.UNDER_REPAIR);
+    }
 
 
 

@@ -13,4 +13,8 @@ public class Wardrobe extends Product {
     public String getName() {
         return name;
     }
+
+    public int getUnitsPerTick() {
+        return unitsPerTick;
+    }
 }

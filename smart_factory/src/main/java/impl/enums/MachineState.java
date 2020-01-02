@@ -3,5 +3,6 @@ package impl.enums;
 public enum MachineState {
     WORKING,
     BROKEN,
-    UNDER_REPAIR
+    UNDER_REPAIR,
+    AFTER_REPAIR
 }

@@ -14,4 +14,8 @@ public class Table extends Product  {
     public String getName() {
         return name;
     }
+
+    public int getUnitsPerTick() {
+        return unitsPerTick;
+    }
 }

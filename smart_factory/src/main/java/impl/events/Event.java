@@ -1,5 +1,6 @@
 package impl.events;
 
+import impl.Tick;
 import impl.lineItems.Machine;
 
 import javax.xml.stream.events.StartDocument;
@@ -7,13 +8,14 @@ import java.util.Date;
 
 public class Event {
 
-    private Date datetime;
+    private Tick tick = Tick.getInstance();
+    private int tickStarted;
     private String type;
     private Machine machine;
 
-    public Event(String type, Date datetime, Machine machine){
+    public Event(String type, Machine machine){
         this.type = type;
-        this.datetime = datetime;
+        this.tickStarted = tick.getCurrentTick();
         this.machine = machine;
     }
 
@@ -25,12 +27,12 @@ public class Event {
         this.type = type;
     }
 
-    public Date getDatetime() {
-        return datetime;
+    public int getTickStarted() {
+        return tickStarted;
     }
 
     public String toString() {
-        return "Event type: " + type + ". Time created: " + datetime;
+        return "Event type: " + type + ". Time created: " + tickStarted;
     }
 
     public Machine getMachine() {

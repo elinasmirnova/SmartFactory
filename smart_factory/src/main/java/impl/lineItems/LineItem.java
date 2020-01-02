@@ -2,8 +2,10 @@ package impl.lineItems;
 
 
 import impl.Entity;
+import impl.Observer;
+import impl.products.Product;
 
-public abstract class LineItem implements Entity {
+public abstract class LineItem implements Entity, Observer{
 
     private int typeId;
     private String name;
@@ -17,10 +19,6 @@ public abstract class LineItem implements Entity {
 
     public int getTypeId() {
         return typeId;
-    }
-
-    public void createMachine() {
-
     }
 
     public String getId() {
@@ -39,10 +37,16 @@ public abstract class LineItem implements Entity {
         this.nextLineItem = nextLineItem;
     }
 
-    protected abstract void work();
+    public void work(Product product) {
+        if (getNextLineItem() == null) {
+            System.out.println("The product is done");
+        }
+        getNextLineItem().work(product);
+    }
 
     public String getName() {
         return name;
     }
+
 
 }

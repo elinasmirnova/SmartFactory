@@ -1,25 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="Javadoc and machine">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/impl/Observer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Line.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Tick.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Tick.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/enums/MachineState.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/enums/MachineState.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/events/BreakdownEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/events/BreakdownEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/events/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/events/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/events/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/events/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/events/FinishRepairEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/events/FinishRepairEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/events/StartRepairEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/events/StartRepairEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/repairman/Queue.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/repairman/Queue.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/repairman/RepairHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/repairman/RepairHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/repairman/Repairman.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/repairman/Repairman.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/strategy/ChairStrategy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/strategy/ChairStrategy.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +49,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
-    <option name="RESET_MODE" value="HARD" />
+    <option name="RESET_MODE" value="KEEP" />
   </component>
   <component name="MavenImportPreferences">
     <option name="importingSettings">
@@ -160,14 +169,7 @@
       <option name="project" value="LOCAL" />
       <updated>1577975078429</updated>
     </task>
-    <task id="LOCAL-00006" summary="Reports refactoring">
-      <created>1577980615847</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1577980615847</updated>
-    </task>
-    <option name="localTasksCounter" value="7" />
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

@@ -24,4 +24,9 @@ public class Miller extends Machine {
     public int getOil() {
         return oil;
     }
+
+    @Override
+    public void update() {
+
+    }
 }
