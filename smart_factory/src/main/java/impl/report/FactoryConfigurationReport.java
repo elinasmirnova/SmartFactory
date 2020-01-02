@@ -6,10 +6,11 @@ import impl.lineItems.LineItem;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class FactoryConfigurationReport {
+public class FactoryConfigurationReport implements Report {
 
     private Factory factory;
 
@@ -17,7 +18,7 @@ public class FactoryConfigurationReport {
         this.factory = factory;
     }
 
-    public void generateReport() throws Exception {
+    public void generateReport() {
         String filename = "FactoryConfigurationReport.json";
         JSONObject factoryConfig = new JSONObject();
         factoryConfig.put("factory", factory.getName());
@@ -38,6 +39,10 @@ public class FactoryConfigurationReport {
         }
         factoryConfig.put("lines", lines);
 
-        Files.write(Paths.get(filename), factoryConfig.toJSONString().getBytes());
+        try {
+            Files.write(Paths.get(filename), factoryConfig.toJSONString().getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

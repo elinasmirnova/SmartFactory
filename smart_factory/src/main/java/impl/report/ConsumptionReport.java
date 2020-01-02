@@ -7,10 +7,11 @@ import impl.lineItems.Machine;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-public class ConsumptionReport {
+public class ConsumptionReport implements Report{
 
     private Factory factory;
 
@@ -18,7 +19,7 @@ public class ConsumptionReport {
         this.factory = factory;
     }
 
-    public void generateReport() throws Exception {
+    public void generateReport() {
         String filename = "ConsumptionReport.json";
         JSONObject consumption = new JSONObject();
         consumption.put("factory", factory.getName());
@@ -50,6 +51,10 @@ public class ConsumptionReport {
         }
         consumption.put("lines", lines);
 
-        Files.write(Paths.get(filename), consumption.toJSONString().getBytes());
+        try {
+            Files.write(Paths.get(filename), consumption.toJSONString().getBytes());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

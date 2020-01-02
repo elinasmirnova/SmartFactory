@@ -1,29 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="event handler added">
-      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/impl/report/Report.java" afterDir="false" />
+    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Factory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Line.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Line.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Lathe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Miller.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Sander.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Saw.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Worker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/report/ConsumptionReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/report/FactoryConfigurationReport.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/report/Report.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/report/Report.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Inspector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Manager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/visitor/Visitor.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -143,7 +126,14 @@
       <option name="project" value="LOCAL" />
       <updated>1577359497289</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Factory config and consumption report added">
+      <created>1577972746037</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1577972746037</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -166,6 +156,7 @@
     <MESSAGE value="basic event" />
     <MESSAGE value="breakdown event" />
     <MESSAGE value="event handler added" />
-    <option name="LAST_COMMIT_MESSAGE" value="event handler added" />
+    <MESSAGE value="Factory config and consumption report added" />
+    <option name="LAST_COMMIT_MESSAGE" value="Factory config and consumption report added" />
   </component>
 </project>
