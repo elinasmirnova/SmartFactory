@@ -23,8 +23,7 @@ public class MachineTest {
 
     @Test
     public void createMachineTest() {
-//        System.out.println(machine);
-//        System.out.println(machine.getState());
+
         assertEquals(state, machine.getState());
         assertEquals(condition, machine.getCondition());
         assertEquals(repairTime, machine.getRepairTime());
