@@ -1,6 +1,6 @@
 # OMO Smart Factory
 
-##Semestrální práce z předmětu B6B36OMO. 
+## Semestrální práce z předmětu B6B36OMO. 
 
 System simuluje práci továrny na nábytek. 
 
@@ -10,7 +10,7 @@ Každý typ stroje má svou spotřebu a náklady na provoz, ale také opotřeben
 
 Stroje, lidi a produkty navštěvuje ředitel a inspektor. U těchto tříd je důležité mít dostupnou vždy jen jednu a tu samou instanci, proto používáme vzor Singleton.  Během návštěvy se názvy provedených akcí zapisují do logu.
 
-###Pro implementaci továrny jsme použili 7 design patternů:
+### Pro implementaci továrny jsme použili 7 design patternů:
 * **Builder** - 
 * **Strategy** - 
 * **Object pool** - tento pattern jsme použili ve třídě RepairStatus. Třída poskytuje instance třídy Repairman a obsahuje 2 pole: available, kde jsou už nainstancovaní opraváři, a working repairmen. Když bude zavolána metoda getRepairman(), třída vezme opraváře z pole available (pokud pole není prázdné)  a vloží ho do pole working.
