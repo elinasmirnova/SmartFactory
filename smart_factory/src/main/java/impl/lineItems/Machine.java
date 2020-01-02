@@ -62,7 +62,7 @@ public abstract class Machine extends LineItem{
         if (getNextLineItem() == null) {
             System.out.println("The product is done");
         }
-        condition -= 10;
+        condition -= 5;
         if (condition < 10) {
             setState(MachineState.BROKEN);
             //eventHandler.addEvent(new BreakdownEvent("Breakdown"), time, getId());

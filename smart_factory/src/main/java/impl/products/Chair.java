@@ -2,6 +2,8 @@ package impl.products;
 
 public class Chair extends Product {
     private final String name = "Chair";
+    private final int unitsPerTick = 3;
+
     public Chair(int id) {
         super(id);
     }

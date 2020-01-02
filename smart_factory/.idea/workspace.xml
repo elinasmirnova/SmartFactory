@@ -1,7 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="" />
+    <list default="true" id="6a646339-2dc8-430c-a7b4-df7792387804" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/Factory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/Factory.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/FactoryBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/LineItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Machine.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/lineItems/Polisher.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Chair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Product.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Table.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/impl/products/Wardrobe.java" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +33,13 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
     <option name="RESET_MODE" value="HARD" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
   </component>
   <component name="ProjectId" id="1UfEXEu7Eo1VJ2govVreqjmsqJY" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">

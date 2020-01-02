@@ -40,11 +40,6 @@ public class FactoryBuilder implements Builder{
     }
 
     @Override
-    public void generateReports() {
-        //TODO
-    }
-
-    @Override
     public void startTicking() {
 
     }

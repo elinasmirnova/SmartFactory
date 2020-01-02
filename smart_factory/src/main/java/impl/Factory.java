@@ -14,6 +14,9 @@ public class Factory implements Entity{
     private static Factory instance = null;
     private List<Line> lines;
     private int tick = 0;
+    private int chairs = 0;
+    private int tables = 0;
+    private int wardrobes = 0;
 
     public Factory(String name) {
         this.name = name;

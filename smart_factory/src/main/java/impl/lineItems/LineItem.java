@@ -44,4 +44,5 @@ public abstract class LineItem implements Entity {
     public String getName() {
         return name;
     }
+
 }
