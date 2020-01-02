@@ -8,14 +8,14 @@ import impl.visitor.Visitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class Inspector immplements Visitor {
+public class Inspector implements Visitor {
 
     private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
 
 
     @Override
     public void visit(Machine machine) {
-        LOG.info("Inspector visited machine: " + machine.getId() + " - condition: " + machine.getCondition());
+        LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
     }
 
     @Override
