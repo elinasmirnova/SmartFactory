@@ -16,6 +16,7 @@ public class FactoryBuilder implements Builder{
     private ProductStrategy strategy;
     private List<LineItem> availableLineItems;
 
+
     @Override
     public void createFactory() {
         this.factory = Factory.getInstance("factory1");
@@ -27,6 +28,9 @@ public class FactoryBuilder implements Builder{
        // line.setStrategy(new ChairStrategy(line, getAvailableLineItems()));
     }
 
+    /***
+     * initialise line items
+     */
     @Override
     public void createLineItems() {
         availableLineItems.add(machineFactory.createMachine(MachineType.SAW));

@@ -29,11 +29,18 @@ public class Line implements Observer{
         tick.attach(this);
     }
 
+    /***
+     * start production by moving the product from one machine to other
+     * @param product product need to be produced
+     */
     public void startProduction(Product product) {
         this.setLineItems();
         workingItems.forEach(i -> i.work(product));
     }
 
+    /***
+     * realisation of the observer pattern
+     */
     @Override
     public void update() {
       if (currentProduct.getName().startsWith("Chair")) {
@@ -49,11 +56,20 @@ public class Line implements Observer{
         //TODO
     }
 
+    /***
+     * set machines and workers to line
+     */
     public void setLineItems() {
         System.out.println("Setting machines and workers to line...");
         getStrategy().getSequence().forEach(i -> this.addWorkingItem(findMatchingAvailableLineItem(availableLineItems, i)));
     }
 
+    /***
+     * filter the line item by type
+     * @param items line items
+     * @param type filter
+     * @return needed line item
+     */
     private LineItem findMatchingAvailableLineItem(List<LineItem> items, String type) {
         LineItem item = items.stream()
                 .filter(i -> i.getId().startsWith(type))
@@ -66,6 +82,10 @@ public class Line implements Observer{
 //        this.strategy = strategy;
 //    }
 
+    /**
+     * realisation of the visitor pattern
+     * @param visitor visitor
+     */
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
@@ -78,6 +98,11 @@ public class Line implements Observer{
         this.id = id;
     }
 
+    /***
+     * get machines
+     * @param all the list of lineitems
+     * @return all machines
+     */
     private List<Machine> getMachines(List<LineItem> all) {
         List<Machine> machines = new ArrayList<Machine>();
         for (LineItem item : all) {
@@ -88,6 +113,10 @@ public class Line implements Observer{
         return machines;
     }
 
+    /***
+     * sort by condition
+     * @return filtered machineList
+     */
     public List<Machine> sortByCondition() {
 
         List<Machine> machines = getMachines(workingItems);
@@ -104,6 +133,10 @@ public class Line implements Observer{
         return workingItems;
     }
 
+    /***
+     * add lineitem to workingitems
+     * @param item item need to be added
+     */
     public void addWorkingItem(LineItem item) {
         workingItems.add(item);
         LineItem next = null;

@@ -11,6 +11,10 @@ public class Tick {
     private int currentTick = 0;
 
 
+    /***
+     * get one and the same instance of Tick, using the Singleton pattern
+     * @return  the instance of Tick
+     */
     public static Tick getInstance() {
         if (instance == null) {
             instance = new Tick();
@@ -18,6 +22,9 @@ public class Tick {
         return instance;
     }
 
+    /***
+     * start tick
+     */
     public void run() {
         for (int currentTick = 0; currentTick < 200; currentTick++) {
             System.out.println("Tick" + currentTick);
@@ -28,6 +35,9 @@ public class Tick {
 
     public void detach() {}
 
+    /***
+     * realisation of the Observer pattern
+     */
     public void notifyObservers() { //notify(eventType, data)
         for (Observer observer : observers) {
             observer.update();

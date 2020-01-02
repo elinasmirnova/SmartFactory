@@ -14,6 +14,10 @@ public class Worker extends LineItem{
         this.salary = salary;
     }
 
+    /***
+     * handle production process, move to the next machine
+     * @param product the product need to be produced
+     */
     @Override
     public void work(Product product) {
         if (getNextLineItem() == null) {

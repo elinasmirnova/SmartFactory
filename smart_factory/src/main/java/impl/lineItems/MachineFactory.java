@@ -13,6 +13,11 @@ public class MachineFactory {
     private int sanderIdCounter;
     private int sawIdCounter;
 
+    /***
+     * initialise machines by type
+     * @param type the type of the machine
+     * @return machine of the specific type
+     */
     public Machine createMachine(MachineType type) {
         if (type == MachineType.LATHE) {
             return new Lathe("Lathe" + latheIdCounter);
@@ -28,6 +33,10 @@ public class MachineFactory {
         return null;
     }
 
+    /***
+     * get one and the same instance of MachineFactory, using the Singleton pattern
+     * @return  the instance of MachineFactory
+     */
     public static MachineFactory getInstance() {
         if (instance == null) {
             instance = new MachineFactory();

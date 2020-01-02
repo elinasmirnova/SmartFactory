@@ -37,6 +37,10 @@ public abstract class LineItem implements Entity, Observer{
         this.nextLineItem = nextLineItem;
     }
 
+    /***
+     * handle production process, move to the next machine
+     * @param product the product need to be produced
+     */
     public void work(Product product) {
         if (getNextLineItem() == null) {
             System.out.println("The product is done");

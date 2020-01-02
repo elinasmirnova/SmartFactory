@@ -21,6 +21,10 @@ public class Polisher extends Machine {
         super(id);
     }
 
+    /***
+     * realisation of the visitor pattern
+     * @param visitor visitor
+     */
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }

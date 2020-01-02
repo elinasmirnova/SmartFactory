@@ -54,6 +54,10 @@ public class Factory implements Entity{
         }
     }
 
+    /***
+     * realisation of the visitor pattern: accept manager
+     * @param visitor visitor
+     */
     public void acceptManager(Visitor visitor) {
         visitor.visit(this);
         for (Line line : lines) {
@@ -64,6 +68,10 @@ public class Factory implements Entity{
         }
     }
 
+    /***
+     * realisation of the visitor pattern: accept inspector
+     * @param visitor visitor
+     */
     public void acceptInspector(Visitor visitor) {
         for (Line line: lines) {
             for (LineItem machine : line.sortByCondition()){
@@ -105,6 +113,10 @@ public class Factory implements Entity{
         this.wardrobes = wardrobes;
     }
 
+    /***
+     * get total sum of all the material
+     * @return
+     */
     public int getTotalMaterial() {
         int total = chairs * 1 + tables * 3 + wardrobes * 4;
         return total;

@@ -50,6 +50,10 @@ public abstract class Machine extends LineItem implements Observer {
         visitor.visit(this);
     }
 
+    /***
+     * handle production process, move to the next machine
+     * @param product the product need to be produced
+     */
     @Override
     public void work(Product product) {
 
@@ -74,6 +78,9 @@ public abstract class Machine extends LineItem implements Observer {
         return repairTime;
     }
 
+    /***
+     * realisation of the observer pattern: check state and add event
+     */
     @Override
     public void update() {
         if (getState().equals(MachineState.UNDER_REPAIR)) {

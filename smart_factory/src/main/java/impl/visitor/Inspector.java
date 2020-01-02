@@ -16,7 +16,10 @@ public class Inspector implements Visitor {
     private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
 
 
-
+    /***
+     * Write the information about visited machines to log
+     * @param machine a visited machine
+     */
     @Override
     public void visit(Machine machine) {
         LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
