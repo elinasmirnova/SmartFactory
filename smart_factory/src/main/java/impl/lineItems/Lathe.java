@@ -5,6 +5,13 @@ import impl.visitor.Visitor;
 public class Lathe extends Machine {
     private final String name = "Lathe";
     private final int oil = 2;
+    private final int ec = 4;
+
+    @Override
+    public int getEC() {
+        return ec;
+    }
+
     public Lathe(String id) {
         super(id);
     }

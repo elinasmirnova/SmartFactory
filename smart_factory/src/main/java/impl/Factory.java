@@ -80,4 +80,34 @@ public class Factory implements Entity{
     public void setTick(int tick) {
         this.tick = tick;
     }
+
+    public int getChairs() {
+        return chairs;
+    }
+
+    public void setChairs(int chairs) {
+        this.chairs = chairs;
+    }
+
+    public int getTables() {
+        return tables;
+    }
+
+    public void setTables(int tables) {
+        this.tables = tables;
+    }
+
+    public int getWardrobes() {
+        return wardrobes;
+    }
+
+    public void setWardrobes(int wardrobes) {
+        this.wardrobes = wardrobes;
+    }
+
+    public int getTotalMaterial() {
+        int total = chairs * 1 + tables * 3 + wardrobes * 4;
+        return total;
+    }
+
 }

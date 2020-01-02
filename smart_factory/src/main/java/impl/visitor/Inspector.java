@@ -8,9 +8,13 @@ import impl.visitor.Visitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Inspector visits machines in order from the most damaged and logs their condition
+ */
 public class Inspector implements Visitor {
 
     private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
+
 
 
     @Override

@@ -19,6 +19,9 @@ public class ConsumptionReport implements Report{
         this.factory = factory;
     }
 
+    /**
+     * Generates report to json file
+     */
     public void generateReport() {
         String filename = "ConsumptionReport.json";
         JSONObject consumption = new JSONObject();
@@ -43,7 +46,7 @@ public class ConsumptionReport implements Report{
             jsonLine.put("lineItems", lineItems);
             jsonLine.put("oilTotal", line.getTotalOil());
             jsonLine.put("electricityTotal", line.getTotalEC());
-            jsonLine.put("materialTotal", line.getTotalMat());
+            jsonLine.put("materialTotal", factory.getTotalMaterial());
 
             lines.add(jsonLine);
             lineItems.clear();

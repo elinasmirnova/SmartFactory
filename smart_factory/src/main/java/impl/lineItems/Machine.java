@@ -73,6 +73,4 @@ public abstract class Machine extends LineItem{
     }
 
     public abstract int getEC();
-
-    public abstract int getMat();
 }

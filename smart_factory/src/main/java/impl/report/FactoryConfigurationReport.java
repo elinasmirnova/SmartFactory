@@ -14,6 +14,10 @@ public class FactoryConfigurationReport implements Report {
 
     private Factory factory;
 
+    /**
+     * Generates json configuration of the current state of the factory
+     * @param factory
+     */
     public FactoryConfigurationReport(Factory factory) {
         this.factory = factory;
     }

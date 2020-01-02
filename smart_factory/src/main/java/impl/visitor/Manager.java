@@ -9,6 +9,9 @@ import impl.visitor.Visitor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+/**
+ * Manager visits and logs about the factory
+ */
 public class Manager implements Visitor {
 
     private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
@@ -33,4 +36,3 @@ public class Manager implements Visitor {
         LOG.info("Manager visited factory: " + factory.getName() );
     }
 }
-
