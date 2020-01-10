@@ -7,5 +7,8 @@ public interface Builder {
 
     void createLineItems();
 
+    void setRepairmen();
+
     void startTicking();
 }
+

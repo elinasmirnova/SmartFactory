@@ -1,6 +1,7 @@
 package impl;
 
 import impl.lineItems.LineItem;
+import impl.repairman.RepairmenPool;
 import impl.visitor.Inspector;
 import impl.visitor.Visitor;
 
@@ -12,6 +13,7 @@ public class Factory{
     //private static Factory instance = null;
     private List<Line> lines;
     private List<LineItem> availableLineItems;
+    private RepairmenPool pool = RepairmenPool.getInstance();
     private static int tick = 0;
     public static int chairs = 0;
     public static int tables = 0;
@@ -57,7 +59,11 @@ public class Factory{
         lines.forEach(Line::setLineItems);
     }
 
-//    @Override
+    public RepairmenPool getPool() {
+        return pool;
+    }
+
+    //    @Override
 //    public void accept(Visitor visitor) {
 //        if (visitor instanceof Inspector) {
 //            acceptInspector(visitor);

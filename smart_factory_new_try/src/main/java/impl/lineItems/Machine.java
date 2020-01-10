@@ -1,10 +1,18 @@
 package impl.lineItems;
 
+import impl.enums.MachineState;
+import impl.events.BreakdownEvent;
+import impl.events.EventHandler;
+import impl.events.FinishRepairEvent;
+import impl.events.StartRepairEvent;
+
 public abstract class Machine extends LineItem {
 
     private int condition = 100;
     private int repairTime;
-    private final int typeId = 0; //хуйня
+    private final int typeId = 0;
+    private MachineState state = MachineState.WORKING;
+    private EventHandler eventHandler = EventHandler.getInstance();
 
     public Machine(int id, String name) {
         super(id, name);
@@ -30,18 +38,34 @@ public abstract class Machine extends LineItem {
         return typeId;
     }
 
+    public MachineState getState() {
+        return state;
+    }
+
+    public void setState(MachineState state) {
+        this.state = state;
+    }
+
     @Override
     public void work() {
+        if (getState().equals(MachineState.UNDER_REPAIR)) {
+            eventHandler.addEvent(new StartRepairEvent("Start Repair", this));
+
+        } else if (getState().equals(MachineState.AFTER_REPAIR) ) {
+            eventHandler.addEvent(new FinishRepairEvent("Finish Repair", this));
+            // continue production on this line
+            this.setState(MachineState.WORKING);
+        }
         if (getNextLineItem() == null) {
             System.out.println("The batch is done");
         } else {
             condition -= 15;
-            if (condition < 30) {
+            if (condition < 90) {
                 System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
-                //setState(MachineState.BROKEN);
+                setState(MachineState.BROKEN);
+                eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
                 //stop production on the line
-//            eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
-//            brokenMachines.getMachineQueue().add(this);
+
             } else {
                 System.out.println(this.getName() + " with id " + this.getId() + " is working");
             }

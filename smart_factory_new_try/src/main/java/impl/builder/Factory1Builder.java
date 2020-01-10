@@ -8,6 +8,7 @@ import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
 import impl.lineItems.MachineFactory;
 import impl.lineItems.Worker;
+import impl.repairman.Repairman;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +48,18 @@ public class Factory1Builder implements Builder {
     }
 
     @Override
+    public void setRepairmen() {
+        List<Repairman> repairmen = new ArrayList<>();
+        repairmen.add(new Repairman(1, true));
+        repairmen.add(new Repairman(2, true));
+        factory.getPool().setAvailableRepairmen(repairmen);
+    }
+
+    @Override
     public void startTicking() {
         factory.startProduction();
         Tick.getInstance().run();
     }
+
+
 }
