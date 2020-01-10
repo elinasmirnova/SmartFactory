@@ -59,5 +59,4 @@ public abstract class LineItem implements Observer, Entity {
     }
 
     public abstract void work();
-
 }
