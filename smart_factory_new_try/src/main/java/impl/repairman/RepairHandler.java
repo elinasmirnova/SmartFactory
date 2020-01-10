@@ -15,7 +15,7 @@ public class RepairHandler {
         else {
             //get the oldest machine from queue
             Machine brokenMachine = queue.getMachineQueue().removeFirst();
-            System.out.println(brokenMachine.getName() + "was returned from the queue");
+            System.out.println(brokenMachine.getName() + " was returned from the queue");
 
             if (repairman != null){
                 repairman.simulateFixing(brokenMachine);

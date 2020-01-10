@@ -1,10 +1,12 @@
 package impl.lineItems;
 
 
+import impl.Entity;
 import impl.Observer;
 import impl.Tick;
+import impl.visitor.Visitor;
 
-public abstract class LineItem implements Observer {
+public abstract class LineItem implements Observer, Entity {
     private int typeId;
     private int id;
     private String name;
@@ -15,7 +17,6 @@ public abstract class LineItem implements Observer {
     public LineItem(int id, String name) {
         this.id = id;
         this.name = name;
-        //tick.attach(this);
     }
 
     public int getId() {

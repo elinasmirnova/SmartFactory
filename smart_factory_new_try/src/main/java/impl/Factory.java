@@ -7,7 +7,7 @@ import impl.visitor.Visitor;
 
 import java.util.List;
 
-public class Factory{
+public class Factory implements Entity{
 
     private String name;
     //private static Factory instance = null;
@@ -63,33 +63,33 @@ public class Factory{
         return pool;
     }
 
-    //    @Override
-//    public void accept(Visitor visitor) {
-//        if (visitor instanceof Inspector) {
-//            acceptInspector(visitor);
-//        } else {
-//            acceptManager(visitor);
-//        }
-//    }
-//
-//    public void acceptManager(Visitor visitor) {
-//        visitor.visit(this);
-//        for (Line line : lines) {
-//            line.accept(visitor);
-//            for (LineItem lineItem : line.getWorkingItems()) {
-//                lineItem.accept(visitor);
-//            }
-//        }
-//    }
-//
-//    public void acceptInspector(Visitor visitor) {
-//        for (Line line: lines) {
-//            for (LineItem machine : line.sortByCondition()){
-//                machine.accept(visitor);
-//            }
-//        }
-//
-//    }
+        @Override
+    public void accept(Visitor visitor) {
+        if (visitor instanceof Inspector) {
+            acceptInspector(visitor);
+        } else {
+            acceptManager(visitor);
+        }
+    }
+
+    public void acceptManager(Visitor visitor) {
+        visitor.visit(this);
+        for (Line line : lines) {
+            line.accept(visitor);
+            for (LineItem lineItem : line.getWorkingItems()) {
+                lineItem.accept(visitor);
+            }
+        }
+    }
+
+    public void acceptInspector(Visitor visitor) {
+        for (Line line: lines) {
+            for (LineItem machine : line.sortByCondition()){
+                machine.accept(visitor);
+            }
+        }
+
+    }
 
     public int getTick() {
         return tick;

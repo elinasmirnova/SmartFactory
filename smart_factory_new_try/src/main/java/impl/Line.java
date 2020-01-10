@@ -2,27 +2,19 @@ package impl;
 
 import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
+import impl.lineItems.Machine;
+import impl.visitor.Visitor;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
-public class Line implements Observer{
+public class Line implements Observer, Entity{
     private Factory factory;
     private int id;
     private List<LineItem> workingItems = new ArrayList<>();
     private Tick tick = Tick.getInstance();
     private ProductEnum productType;
     private boolean isWorking;
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public Line(Factory factory, int id, ProductEnum type) {
         this.factory = factory;
@@ -63,6 +55,32 @@ public class Line implements Observer{
 
     }
 
+    public void reorderLineItems() {
+
+    }
+
+    private List<Machine> getMachines(List<LineItem> all) {
+        List<Machine> machines = new ArrayList<Machine>();
+        for (LineItem item : all) {
+            if (item instanceof Machine) {
+                machines.add((Machine) item);
+            }
+        }
+        return machines;
+    }
+
+    public List<Machine> sortByCondition() {
+
+        List<Machine> machines = getMachines(workingItems);
+        Collections.sort(machines, new Comparator<Machine>() {
+            @Override
+            public int compare(Machine o1, Machine o2) {
+                return o1.getCondition() - o2.getCondition();
+            }
+        });
+        return machines;
+    }
+
     @Override
     public void update() {
         workingItems.get(0).setStarting(true);
@@ -73,5 +91,26 @@ public class Line implements Observer{
         } else if (this.productType == ProductEnum.WARDROBE) {
             Factory.wardrobes += 1;
         }
+    }
+
+    @Override
+    public void accept(Visitor visitor) {
+        visitor.visit(this);
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public List<LineItem> getWorkingItems() {
+        return workingItems;
+    }
+
+    public void setWorkingItems(List<LineItem> workingItems) {
+        this.workingItems = workingItems;
     }
 }

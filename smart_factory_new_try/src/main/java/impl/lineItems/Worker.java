@@ -1,5 +1,7 @@
 package impl.lineItems;
 
+import impl.visitor.Visitor;
+
 public class Worker extends LineItem {
     private int salary;
     private final int typeId = 1;
@@ -18,10 +20,5 @@ public class Worker extends LineItem {
             getNextLineItem().work();
         }
     }
-
-//    @Override
-//    public void update() {
-//        super.update();
-//    }
 
 }

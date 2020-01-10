@@ -5,6 +5,7 @@ import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
 import impl.events.FinishRepairEvent;
 import impl.events.StartRepairEvent;
+import impl.visitor.Visitor;
 
 public abstract class Machine extends LineItem {
 
@@ -50,6 +51,8 @@ public abstract class Machine extends LineItem {
     public void work() {
         if (getState().equals(MachineState.UNDER_REPAIR)) {
             eventHandler.addEvent(new StartRepairEvent("Start Repair", this));
+            System.out.println("Machine" + this.getName() + " with id " + this.getId() + "state is changed to Under Repair");
+
 
         } else if (getState().equals(MachineState.AFTER_REPAIR) ) {
             eventHandler.addEvent(new FinishRepairEvent("Finish Repair", this));
@@ -72,6 +75,5 @@ public abstract class Machine extends LineItem {
             getNextLineItem().work();
         }
     }
-
 
 }

@@ -5,6 +5,7 @@ public class ConfigDirector {
         builder.createFactory();
         builder.createLines();
         builder.createLineItems();
+        builder.setRepairmen();
         builder.startTicking();
     }
 }

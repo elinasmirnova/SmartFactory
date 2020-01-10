@@ -34,6 +34,7 @@ public class EventHandler implements Observer {
 
     public void addEvent(Event event) {
         eventQueue.add(event);
+        //TODO: event history
     }
 
     public void handle(){

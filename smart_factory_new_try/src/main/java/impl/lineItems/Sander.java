@@ -7,14 +7,4 @@ public class Sander extends Machine {
     public Sander(int id, String name) {
         super(id, name);
     }
-
-//    @Override
-//    public void work() {
-//        super.work();
-//    }
-//
-//    @Override
-//    public void update() {
-//        super.update();
-//    }
 }

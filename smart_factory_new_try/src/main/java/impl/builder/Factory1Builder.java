@@ -9,6 +9,7 @@ import impl.lineItems.LineItem;
 import impl.lineItems.MachineFactory;
 import impl.lineItems.Worker;
 import impl.repairman.Repairman;
+import impl.repairman.RepairmenPool;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,7 +43,8 @@ public class Factory1Builder implements Builder {
         availableLineItems.add(MachineFactory.getInstance().createMachine(idCounter++, MachineType.SANDER));
         availableLineItems.add(new Worker(idCounter++,"Machine tool operator"));
         availableLineItems.add(new Worker(idCounter++,"Saw operator"));
-        availableLineItems.add(new Worker(idCounter++,"Polisher operator"));
+        availableLineItems.add(new Worker(idCounter++,"Operator"));
+        availableLineItems.add(new Worker(idCounter++,"Operator"));
         availableLineItems.add(new Worker(idCounter++,"Operator"));
         factory.setAvailableLineItems(availableLineItems);
     }
@@ -52,7 +54,17 @@ public class Factory1Builder implements Builder {
         List<Repairman> repairmen = new ArrayList<>();
         repairmen.add(new Repairman(1, true));
         repairmen.add(new Repairman(2, true));
-        factory.getPool().setAvailableRepairmen(repairmen);
+        RepairmenPool.getInstance().setAvailableRepairmen(repairmen);
+    }
+
+    @Override
+    public void setDirector() {
+        //  TODO: ???
+    }
+
+    @Override
+    public void setInspection() {
+
     }
 
     @Override

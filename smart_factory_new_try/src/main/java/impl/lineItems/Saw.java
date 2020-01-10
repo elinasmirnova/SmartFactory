@@ -8,13 +8,4 @@ public class Saw extends Machine {
         super(id, name);
     }
 
-//    @Override
-//    public void work() {
-//        super.work();
-//    }
-//
-//    @Override
-//    public void update() {
-//        super.update();
-//    }
 }

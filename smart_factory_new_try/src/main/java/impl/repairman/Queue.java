@@ -28,7 +28,6 @@ public class Queue {
     }
 
     public LinkedList<Machine> getMachineQueue() {
-        System.out.println("ОЧЕРЕДЬ ЗДЕСЬ");
         return machineQueue;
     }
 }
