@@ -3,21 +3,36 @@ package impl.repairman;
 import impl.enums.MachineState;
 import impl.lineItems.Machine;
 
+import javax.crypto.Mac;
+
 public class RepairHandler {
     private RepairmenPool repairmen = RepairmenPool.getInstance();
     private Queue queue = Queue.getInstance();
+//    private
 //    private Repairman repairman;
 
     public void startRepair(){
         System.out.println("OUR QUEUE: " + queue.getMachineQueue());
-        if (queue.getMachineQueue().size() < repairmen.getAvailableRepairmen().size()){
-            System.out.println("WE HAVE ENOUGH REPAIRMEN TO FIX ALL THE MACHINES IN ONE TICK");
-            for (Machine machine: queue.getMachineQueue()){
+//        if (queue.getMachineQueue().size() < repairmen.getAvailableRepairmen().size()){
+//            System.out.println("WE HAVE ENOUGH REPAIRMEN TO FIX ALL THE MACHINES IN ONE TICK");
+            int count = queue.getMachineQueue().size();
+            int i = 0;
+            while(i < count){
                 Repairman repairman = repairmen.getRepairman();
-                System.out.println("REPAIRMAN " + repairman.getId() + " ARE GOING TO FIX THE MACHINE " + machine.getName().toUpperCase());
-                repairman.simulateFixing(machine);
+                if (repairman != null){
+                    System.out.println("REPAIRMAN " + repairman.getId() + " ARE GOING TO FIX THE MACHINE " + queue.getMachineQueue().get(i).getName().toUpperCase());
+                    repairman.simulateFixing(queue.getMachineQueue().get(i));
+                    queue.getMachineQueue().remove(queue.getMachineQueue().get(i));
+                }
+                else {
+                    System.out.println("THERE ARE NO AVAILABLE REPAIRMEN, MACHINE WILL BE FIXED NEXT TICK");
+                }
+                i++;
+
+
             }
-        }
+//        }
+
     }
 
     public void repair(Machine machine){

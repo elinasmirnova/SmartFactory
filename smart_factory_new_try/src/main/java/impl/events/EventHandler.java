@@ -56,7 +56,7 @@ public class EventHandler implements Observer {
                 else if (eventQueue.get(i).getType().equals("Start Repair")){
                     System.out.println("Got start repair event");
                     StartRepairEvent startRepairEvent = (StartRepairEvent) eventQueue.get(i);
-                    //increases every tick
+                    //increases every tickhttps://softdroid.net/kak-vosstanovit-udalennye-fayly-iz-korziny-rukovodstvo
                     timeToFix += 1;
                     //when equals to time needed to fix the machine --> stop
                     System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + startRepairEvent.getMachine().getRepairTime() + " TICKS TO BE FIXED");
@@ -64,11 +64,6 @@ public class EventHandler implements Observer {
                         repairHandler.repair(startRepairEvent.getMachine());
                         timeToFix = 0;
                     }
-
-
-
-
-
 
                 }
                 i+=1;
