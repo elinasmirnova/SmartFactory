@@ -2,6 +2,9 @@ package impl.visitor;
 
 import impl.Factory;
 import impl.Line;
+import impl.enums.MachineState;
+import impl.events.BreakdownEvent;
+import impl.events.EventHandler;
 import impl.lineItems.Machine;
 import impl.lineItems.Worker;
 import org.slf4j.Logger;
@@ -11,26 +14,29 @@ import org.slf4j.LoggerFactory;
  * Inspector visits machines in order from the most damaged and logs their condition
  */
 public class Inspector implements Visitor {
-    private int id;
-    private String name;
-    private Inspector instance;
-    private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
+//    private int id;
+    private String name = "Lera Ch.";
+    private static Inspector instance;
+    private EventHandler eventHandler = EventHandler.getInstance();
 
-    public Inspector(int id, String name) {
-        this.id = id;
-        this.name = name;
-    }
+//    private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
+//    Logger logger = Logger.getLogger(MyClass.class.getName());
 
-    public Inspector getInstance() {
+    public static Inspector getInstance() {
         if (instance == null) {
-            instance = new Inspector(1, "Lera");
+            instance = new Inspector();
         }
         return instance;
     }
 
     @Override
     public void visit(Machine machine) {
-        LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
+//        LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
+        System.out.println("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
+        if (machine.getCondition() <= 30) {
+            machine.setState(MachineState.BROKEN);
+            eventHandler.addEvent(new BreakdownEvent("Breakdown", machine));
+        }
     }
 
     @Override

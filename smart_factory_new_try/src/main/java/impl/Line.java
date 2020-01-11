@@ -67,9 +67,9 @@ public class Line implements Observer, Entity{
         this.setLineItems(type);
     }
 
-    private List<Machine> getMachines(List<LineItem> all) {
+    public List<Machine> getMachines() {
         List<Machine> machines = new ArrayList<Machine>();
-        for (LineItem item : all) {
+        for (LineItem item : getWorkingItems()) {
             if (item instanceof Machine) {
                 machines.add((Machine) item);
             }
@@ -79,7 +79,7 @@ public class Line implements Observer, Entity{
 
     public List<Machine> sortByCondition() {
 
-        List<Machine> machines = getMachines(workingItems);
+        List<Machine> machines = getMachines();
         Collections.sort(machines, new Comparator<Machine>() {
             @Override
             public int compare(Machine o1, Machine o2) {
@@ -97,7 +97,7 @@ public class Line implements Observer, Entity{
                 count++;
             }
         }
-        if (count == getMachines(workingItems).size()) {
+        if (count == getMachines().size()) {
             workingItems.get(0).setStarting(true);
         }
         // Event lastEvent = history.get(history.size() - 1);
@@ -149,16 +149,16 @@ public class Line implements Observer, Entity{
         this.workingItems = workingItems;
     }
 
+    public boolean isWorking() {
+        return isWorking;
+    }
+
     public ProductEnum getProductType() {
         return productType;
     }
 
     public void setProductType(ProductEnum productType) {
         this.productType = productType;
-    }
-
-    public boolean isWorking() {
-        return isWorking;
     }
 
     public void setWorking(boolean working) {

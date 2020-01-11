@@ -8,6 +8,9 @@ import impl.events.FinishRepairEvent;
 import impl.events.StartRepairEvent;
 import impl.visitor.Visitor;
 
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
+
 public abstract class Machine extends LineItem {
 
     private int condition = 100;
@@ -16,6 +19,8 @@ public abstract class Machine extends LineItem {
     //private int repairTime;
     private MachineState state = MachineState.WORKING;
     private EventHandler eventHandler = EventHandler.getInstance();
+    private int oil;
+    private int ec;
 
     public Machine(int id, String name) {
         super(id, name);
@@ -68,7 +73,8 @@ public abstract class Machine extends LineItem {
             if (getNextLineItem() == null) {
                 System.out.println("The batch is done");
             } else {
-                condition -= 15;
+                int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
+                condition -= 5 + randomNum;
                 if (condition < 30) {
                     System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
                     setState(MachineState.BROKEN);
@@ -88,4 +94,11 @@ public abstract class Machine extends LineItem {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+
+
+    public abstract int getConsumptionPerTick();
+
+    public abstract int getOil();
+    public abstract int getEc();
 }

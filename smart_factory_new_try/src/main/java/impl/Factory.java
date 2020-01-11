@@ -3,14 +3,18 @@ package impl;
 import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
 import impl.repairman.RepairmenPool;
+import impl.report.Report;
 import impl.visitor.Inspector;
+import impl.visitor.Manager;
 import impl.visitor.Visitor;
 
 import java.util.List;
 
-public class Factory implements Entity{
+public class Factory implements Observer, Entity{
 
     private String name;
+    private Tick t = Tick.getInstance();
+    private Report report = new Report(this);
     //private static Factory instance = null;
     private List<Line> lines;
     private List<LineItem> availableLineItems;
@@ -20,8 +24,12 @@ public class Factory implements Entity{
     public static int tables = 0;
     public static int wardrobes = 0;
 
+    private Manager manager = Manager.getInstance();
+    private Inspector inspector = Inspector.getInstance();
+
     public Factory(String name) {
         this.name = name;
+        t.attach(this);
     }
 
     public String getName() {
@@ -41,11 +49,11 @@ public class Factory implements Entity{
     }
 
 //    public static Factory getInstance(String name) {
-//        if (instance == null) {
-//            instance = new Factory(name);
-//        }
-//        return instance;
-//    }
+////        if (instance == null) {
+////            instance = new Factory(name);
+////        }
+////        return instance;
+////    }
 
 
     public List<LineItem> getAvailableLineItems() {
@@ -72,7 +80,7 @@ public class Factory implements Entity{
         return pool;
     }
 
-        @Override
+    @Override
     public void accept(Visitor visitor) {
         if (visitor instanceof Inspector) {
             acceptInspector(visitor);
@@ -113,4 +121,13 @@ public class Factory implements Entity{
         return total;
     }
 
+    @Override
+    public void update() {
+        if (t.getCurrentTick()%100 == 0) {
+            accept(inspector);
+            report.generateConsumptionReport(1,10);
+        } else if (t.getCurrentTick()%50 == 0) {
+            accept(manager);
+        }
+    }
 }
