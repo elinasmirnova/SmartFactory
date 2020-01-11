@@ -49,32 +49,33 @@ public abstract class Machine extends LineItem {
 
     @Override
     public void work() {
-        if (getState().equals(MachineState.UNDER_REPAIR)) {
-            eventHandler.addEvent(new StartRepairEvent("Start Repair", this));
-            System.out.println("Machine" + this.getName() + " with id " + this.getId() + "state is changed to Under Repair");
-
-
-        } else if (getState().equals(MachineState.AFTER_REPAIR) ) {
-            eventHandler.addEvent(new FinishRepairEvent("Finish Repair", this));
-            // continue production on this line
-            this.setState(MachineState.WORKING);
-        }
-        if (getNextLineItem() == null) {
-            System.out.println("The batch is done");
-        } else {
-            condition -= 15;
-            if (condition < 90) {
-                System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
-                setState(MachineState.BROKEN);
-                eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
-                //stop production on the line
-
+//        if (getState().equals(MachineState.UNDER_REPAIR)) {
+//            eventHandler.addEvent(new StartRepairEvent("Start Repair", this));
+//            System.out.println("Machine" + this.getName() + " with id " + this.getId() + " state is changed to Under Repair");
+//
+//
+//        } else if (getState().equals(MachineState.AFTER_REPAIR) ) {
+//            eventHandler.addEvent(new FinishRepairEvent("Finish Repair", this));
+//            // continue production on this line
+//            this.setState(MachineState.WORKING);
+//        } else {
+            if (getNextLineItem() == null) {
+                System.out.println("The batch is done");
             } else {
-                System.out.println(this.getName() + " with id " + this.getId() + " is working");
-                getNextLineItem().work();
+                condition -= 15;
+                if (condition < 30) {
+                    System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
+                    setState(MachineState.BROKEN);
+                    eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
+                    //stop production on the line
+
+                } else {
+                    System.out.println(this.getName() + " with id " + this.getId() + " is working");
+                    getNextLineItem().work();
+                }
             }
         }
-    }
+   // }
 
     @Override
     public void accept(Visitor visitor) {

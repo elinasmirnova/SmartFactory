@@ -65,7 +65,7 @@ public class Factory implements Entity{
         for (Line line : lines) {
             line.setLineItems(line.getProductType());
         }
-        lines.get(0).reorderLineItems(ProductEnum.TABLE);
+      //  lines.get(0).reorderLineItems(ProductEnum.TABLE);
     }
 
     public RepairmenPool getPool() {
