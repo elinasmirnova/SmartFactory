@@ -13,10 +13,10 @@ public class Worker extends LineItem {
     @Override
     public void work() {
         if (getNextLineItem() == null) {
-            System.out.println(this.getName() + " with id " + this.getId()  + " is working") ;
             System.out.println("The batch is done");
         } else {
             System.out.println(this.getName() + " with id " + this.getId()  + " is working") ;
+            salary += 200;
             getNextLineItem().work();
         }
     }

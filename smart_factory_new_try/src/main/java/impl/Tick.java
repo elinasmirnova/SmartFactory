@@ -25,7 +25,7 @@ public class Tick {
 
     public void attach(Observer entity) {observers.add(entity);}
 
-    public void detach() {}
+    public void detach(Observer entity) {observers.remove(entity);}
 
     public void notifyObservers() { //notify(eventType, data)
         for (Observer observer : observers) {

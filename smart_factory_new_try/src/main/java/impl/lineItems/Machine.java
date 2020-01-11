@@ -71,8 +71,8 @@ public abstract class Machine extends LineItem {
 
             } else {
                 System.out.println(this.getName() + " with id " + this.getId() + " is working");
+                getNextLineItem().work();
             }
-            getNextLineItem().work();
         }
     }
 

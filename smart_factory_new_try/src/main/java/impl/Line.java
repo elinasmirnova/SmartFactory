@@ -23,10 +23,10 @@ public class Line implements Observer, Entity{
         tick.attach(this);
     }
 
-    public void setLineItems() {
+    public void setLineItems(ProductEnum type) {
         System.out.println("Setting machines and workers to line...");
-        productType.getLineItemSequence().forEach(i -> workingItems.add(findMatchingAvailableLineItem(factory.getAvailableLineItems(), i)));
-        this.orderLineItems();
+        type.getLineItemSequence().forEach(i -> workingItems.add(findMatchingAvailableLineItem(factory.getAvailableLineItems(), i)));
+        this.orderLineItems(); //TODO: hodit vyjimku, kdyz se nepodarilo nastavit linu
 
     }
 
@@ -38,7 +38,7 @@ public class Line implements Observer, Entity{
         return item;
     }
 
-    public void orderLineItems() {
+    private void orderLineItems() {
         LineItem next = null;
         Iterator<LineItem> iter = workingItems.iterator();
        // workingItems.get(0).setStarting(true);
@@ -55,8 +55,11 @@ public class Line implements Observer, Entity{
 
     }
 
-    public void reorderLineItems() {
-
+    public void reorderLineItems(ProductEnum type) {
+        System.out.println("Got the request for a new batch of products");
+        workingItems.forEach(i -> tick.detach(i));
+        factory.getAvailableLineItems().addAll(workingItems); //return working items to available line items list
+        this.setLineItems(type);
     }
 
     private List<Machine> getMachines(List<LineItem> all) {
@@ -112,5 +115,13 @@ public class Line implements Observer, Entity{
 
     public void setWorkingItems(List<LineItem> workingItems) {
         this.workingItems = workingItems;
+    }
+
+    public ProductEnum getProductType() {
+        return productType;
+    }
+
+    public void setProductType(ProductEnum productType) {
+        this.productType = productType;
     }
 }

@@ -1,5 +1,6 @@
 package impl;
 
+import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
 import impl.repairman.RepairmenPool;
 import impl.visitor.Inspector;
@@ -55,8 +56,16 @@ public class Factory implements Entity{
         this.availableLineItems = availableLineItems;
     }
 
+    public void addAvailableLineItem(LineItem item) {
+        getAvailableLineItems().add(item);
+    }
+
     public void startProduction() {
-        lines.forEach(Line::setLineItems);
+        //lines.forEach(Line::setLineItems);
+        for (Line line : lines) {
+            line.setLineItems(line.getProductType());
+        }
+        lines.get(0).reorderLineItems(ProductEnum.TABLE);
     }
 
     public RepairmenPool getPool() {
