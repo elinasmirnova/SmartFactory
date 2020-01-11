@@ -54,7 +54,10 @@ public class Factory1Builder implements Builder {
         List<Repairman> repairmen = new ArrayList<>();
         repairmen.add(new Repairman(1, true));
         repairmen.add(new Repairman(2, true));
+        repairmen.add(new Repairman(3, true));
+        repairmen.add(new Repairman(4, true));
         RepairmenPool.getInstance().setAvailableRepairmen(repairmen);
+        System.out.println("Available repairmen after initializing:" + RepairmenPool.getInstance().getAvailableRepairmen().toString());
     }
 
     @Override

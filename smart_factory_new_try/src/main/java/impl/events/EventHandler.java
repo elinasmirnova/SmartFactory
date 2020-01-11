@@ -42,28 +42,40 @@ public class EventHandler implements Observer {
             System.out.println("There are no events to handle");
         }
         else{
-            //get the oldest event from the list
-            Event event = eventQueue.removeFirst();
-            if (event.getType().equals("Breakdown")){
-                System.out.println("Got breakdown event");
-                BreakdownEvent breakdownEvent = (BreakdownEvent) event;
-                queue.getMachineQueue().add(breakdownEvent.getMachine());
-                repairHandler.startRepair();
+            int i = 0;
+            while(i < eventQueue.size()){
+                if (eventQueue.get(i).getType().equals("Breakdown")){
+                    System.out.println("Got breakdown event");
+                    BreakdownEvent breakdownEvent = (BreakdownEvent) eventQueue.get(i);
+                    queue.getMachineQueue().add(breakdownEvent.getMachine());
+                    if (i == eventQueue.size()-1) {
+                        repairHandler.startRepair();
+                    }
 
-            }
-            else if (event.getType().equals("Start repair")){
-                System.out.println("Got start repair event ");
-                StartRepairEvent startRepairEvent = (StartRepairEvent) event;
-                //increases every tick
-                timeToFix += 1;
-                //when equals to time needed to fix the machine --> stop
-                if (startRepairEvent.getMachine().getRepairTime() == timeToFix) {
-                    repairHandler.repair(startRepairEvent.getMachine());
-                    timeToFix = 0;
                 }
+                else if (eventQueue.get(i).getType().equals("Start Repair")){
+                    System.out.println("Got start repair event");
+                    StartRepairEvent startRepairEvent = (StartRepairEvent) eventQueue.get(i);
+                    //increases every tick
+                    timeToFix += 1;
+                    //when equals to time needed to fix the machine --> stop
+                    System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + startRepairEvent.getMachine().getRepairTime() + " TICKS TO BE FIXED");
+                    if (startRepairEvent.getMachine().getRepairTime() == timeToFix) {
+                        repairHandler.repair(startRepairEvent.getMachine());
+                        timeToFix = 0;
+                    }
 
+
+
+
+
+
+                }
+                i+=1;
 
             }
+            eventQueue.clear();
+            System.out.println("AFTER EVERY TICK EVENT QUEUE MUST BE EMPTY:" + eventQueue);
         }
     }
 

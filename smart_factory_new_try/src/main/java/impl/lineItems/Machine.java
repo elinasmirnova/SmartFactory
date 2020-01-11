@@ -30,10 +30,10 @@ public abstract class Machine extends LineItem {
     public int getRepairTime() {
         return repairTime;
     }
-
-    public void setRepairTime(int repairTime) {
-        this.repairTime = repairTime;
-    }
+//
+//    public void setRepairTime(int repairTime) {
+//        this.repairTime = repairTime;
+//    }
 
     public int getTypeId() {
         return typeId;

@@ -6,6 +6,7 @@ import impl.lineItems.Machine;
 public class Repairman {
     private int id;
     private boolean available;
+    private Machine repairedMachine;
 
     public Repairman(int id, boolean available){
         this.id = id;
@@ -36,12 +37,15 @@ public class Repairman {
 //
 //    //simulate fixing process
     public void simulateFixing(Machine machine){
+        repairedMachine = machine;
         machine.setState(MachineState.UNDER_REPAIR);
     }
 
+    public Machine getRepairedMachine() {
+        return repairedMachine;
+    }
 
-
-
-
-
+    public void setRepairedMachine(Machine repairedMachine) {
+        this.repairedMachine = repairedMachine;
+    }
 }
