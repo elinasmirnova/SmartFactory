@@ -1,5 +1,6 @@
 package impl.lineItems;
 
+import impl.Line;
 import impl.enums.MachineState;
 import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
@@ -12,6 +13,7 @@ public abstract class Machine extends LineItem {
     private int condition = 100;
     private int repairTime;
     private final int typeId = 0;
+    //private int repairTime;
     private MachineState state = MachineState.WORKING;
     private EventHandler eventHandler = EventHandler.getInstance();
 
@@ -47,6 +49,10 @@ public abstract class Machine extends LineItem {
         this.state = state;
     }
 
+//    public int countRepairTime() {
+//        getCondition()
+//    }
+
     @Override
     public void work() {
 //        if (getState().equals(MachineState.UNDER_REPAIR)) {
@@ -66,6 +72,7 @@ public abstract class Machine extends LineItem {
                 if (condition < 30) {
                     System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
                     setState(MachineState.BROKEN);
+                    this.getLine().setWorking(false);
                     eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
                     //stop production on the line
 

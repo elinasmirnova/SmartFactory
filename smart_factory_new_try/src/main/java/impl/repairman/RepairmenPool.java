@@ -4,13 +4,14 @@ import impl.Factory;
 import impl.lineItems.Machine;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class RepairmenPool {
     private Factory factory;
-    private List<Repairman> available = new ArrayList<Repairman>();
-    private List<Repairman> working = new ArrayList<Repairman>();
+    private LinkedList<Repairman> available = new LinkedList<Repairman>();
+    private LinkedList<Repairman> working = new LinkedList<Repairman>();
 
     public static RepairmenPool instance;
 
@@ -28,8 +29,8 @@ public class RepairmenPool {
             System.out.println("There are no available repairmen now, try again later");
         }
         else{
-            Repairman repairman = available.get(0);
-            available.remove(0);
+            Repairman repairman = available.removeFirst();
+//            available.remove(0);
             working.add(repairman);
             System.out.println("REPAIRMAN " + repairman.getId() + " WAS TAKEN FROM AVAILABLE POOL");
             return repairman;
@@ -44,7 +45,7 @@ public class RepairmenPool {
 
     //when the machine is fixed return the repairman to the available list
     public void finishRepair(Repairman repairman){
-        available.add(repairman);
+        available.addFirst(repairman);
         working.remove(repairman);
 
     }
@@ -57,11 +58,11 @@ public class RepairmenPool {
         return working;
     }
 
-    public void setAvailableRepairmen(List<Repairman> availableRepairmen) {
+    public void setAvailableRepairmen(LinkedList<Repairman> availableRepairmen) {
         this.available = availableRepairmen;
     }
 
-    public void setWorkingRepairmen(List<Repairman> workingRepairmen) {
+    public void setWorkingRepairmen(LinkedList<Repairman> workingRepairmen) {
         this.working = workingRepairmen;
     }
 

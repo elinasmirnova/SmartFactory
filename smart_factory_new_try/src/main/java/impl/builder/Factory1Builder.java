@@ -12,6 +12,7 @@ import impl.repairman.Repairman;
 import impl.repairman.RepairmenPool;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Factory1Builder implements Builder {
@@ -51,11 +52,11 @@ public class Factory1Builder implements Builder {
 
     @Override
     public void setRepairmen() {
-        List<Repairman> repairmen = new ArrayList<>();
+        LinkedList<Repairman> repairmen = new LinkedList<>();
         repairmen.add(new Repairman(1, true));
         repairmen.add(new Repairman(2, true));
-        repairmen.add(new Repairman(3, true));
-        repairmen.add(new Repairman(4, true));
+//        repairmen.add(new Repairman(3, true));
+//        repairmen.add(new Repairman(4, true));
         RepairmenPool.getInstance().setAvailableRepairmen(repairmen);
         System.out.println("Available repairmen after initializing:" + RepairmenPool.getInstance().getAvailableRepairmen().toString());
     }

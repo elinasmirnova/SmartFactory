@@ -71,7 +71,7 @@ public class EventHandler implements Observer {
                     }
 
                 } else if(eventQueue.get(i).getType().equals("Finish Repair")) {
-                    System.out.println("Got finish repair event");
+                    //System.out.println("Got finish repair event");
                     FinishRepairEvent finisRepairEvent = (FinishRepairEvent) eventQueue.get(i);
                     finisRepairEvent.getMachine().setState(MachineState.WORKING);
                 }

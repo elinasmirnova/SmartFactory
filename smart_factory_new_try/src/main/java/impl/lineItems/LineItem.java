@@ -2,6 +2,7 @@ package impl.lineItems;
 
 
 import impl.Entity;
+import impl.Line;
 import impl.Observer;
 import impl.Tick;
 import impl.enums.MachineState;
@@ -20,6 +21,7 @@ public abstract class LineItem implements Observer, Entity {
     private Tick tick = Tick.getInstance();
     private LineItem nextLineItem;
     private boolean isStarting;
+    private Line line;
     List<Event> history;
     private EventHandler eventHandler = EventHandler.getInstance();
 
@@ -37,24 +39,21 @@ public abstract class LineItem implements Observer, Entity {
     }
 
     public void update() {
-        history = EventHandler.getInstance().getEventHistory();
+        //history = EventHandler.getInstance().getEventHistory();
         if (this instanceof Machine) {
             if (((Machine) this).getState().equals(MachineState.UNDER_REPAIR)) {
                 eventHandler.addEvent(new StartRepairEvent("Start Repair", (Machine) this));
                 System.out.println("Machine" + this.getName() + " with id " + this.getId() + " state is changed to Under Repair");
 
-
             } else if (((Machine) this).getState().equals(MachineState.AFTER_REPAIR)) {
                 eventHandler.addEvent(new FinishRepairEvent("Finish Repair", (Machine) this));
                 // continue production on this line
                 ((Machine) this).setState((MachineState.WORKING));
-            } else if (!history.isEmpty() && history.get(history.size() - 1).getType().equals("Finish Repair")) {
-                if (isStarting) {
-                    isStarting = false;
-                    this.work();
-                }
-            } else {
-                if (isStarting) {
+                this.setStarting(true);
+                line.setWorking(true);
+            }
+            if (line.isWorking()) {
+                if(isStarting) {
                     isStarting = false;
                     this.work();
                 }
@@ -90,6 +89,14 @@ public abstract class LineItem implements Observer, Entity {
 
     public void setStarting(boolean starting) {
         isStarting = starting;
+    }
+
+    public Line getLine() {
+        return line;
+    }
+
+    public void setLine(Line line) {
+        this.line = line;
     }
 
     public abstract void work();

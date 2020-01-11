@@ -18,7 +18,7 @@ public class Line implements Observer, Entity{
     private EventHandler handler = EventHandler.getInstance();
     private Tick tick = Tick.getInstance();
     private ProductEnum productType;
-    private boolean isWorking;
+    private boolean isWorking = true;
 
     public Line(Factory factory, int id, ProductEnum type) {
         this.factory = factory;
@@ -48,6 +48,7 @@ public class Line implements Observer, Entity{
        // workingItems.get(0).setStarting(true);
         for (LineItem item: workingItems) {
             tick.attach(item);
+            item.setLine(this);
         }
         for (int i = 1; i < workingItems.size(); i++) {
             next = workingItems.get(i);
@@ -90,15 +91,16 @@ public class Line implements Observer, Entity{
 
     @Override
     public void update() {
-        //workingItems.get(0).setStarting(true);
-//        LineItem theFirst = workingItems.stream()
-//                                        .filter(i -> {
-//                                            if ( i instanceof Machine) {
-//
-//                                            }
-//                                         } );
-        boolean setFirst = false;
-  //      workingItems.get(0).setStarting(true); ;
+        int count = 0;
+        for (LineItem item : workingItems) {
+            if (item instanceof Machine && ((Machine) item).getState().equals(MachineState.WORKING))  {
+                count++;
+            }
+        }
+        if (count == getMachines(workingItems).size()) {
+            workingItems.get(0).setStarting(true);
+        }
+        // Event lastEvent = history.get(history.size() - 1);
 //        for (LineItem item : workingItems) {
 //            if (item instanceof Machine) {
 //                if (((Machine) item).getState().equals(MachineState.AFTER_REPAIR) || ((Machine) item).getState().equals(MachineState.WORKING)) {
@@ -106,28 +108,25 @@ public class Line implements Observer, Entity{
 //                }
 //            }
 //        }
-        for (Event event: handler.getEventQueue()) {
-            if (event.getType().equals("Finish Repair")) {
-                LineItem theFirst = event.getMachine().getNextLineItem();
-                theFirst.setStarting(true);
-                setFirst = true;
-                break;
-            }
-        }
-        if (!setFirst) {
-            workingItems.get(0).setStarting(true);
-        }
-        if (tick.getCurrentTick() != 1) {
-            if (this.productType == ProductEnum.CHAIR) {
-                Factory.chairs += 3; //TODO: implementovat getUnitsPerTick a udelat tak, aby se to volalo po vytvareni serie
-            } else if (this.productType == ProductEnum.TABLE) {
-                Factory.tables += 2;
-            } else if (this.productType == ProductEnum.WARDROBE) {
-                Factory.wardrobes += 1;
-            }
+//        for (Event event : handler.getEventHistory()) {
+//            if (event.getType().equals("Finish Repair")) {
+//                LineItem theFirst = event.getMachine().getNextLineItem();
+//                theFirst.setStarting(true);
+//                setFirst = true;
+//                break;
+//            }
+//        }
+            if (tick.getCurrentTick() != 1) {
+                if (this.productType == ProductEnum.CHAIR) {
+                    Factory.chairs += 3; //TODO: implementovat getUnitsPerTick a udelat tak, aby se to volalo po vytvareni serie
+                } else if (this.productType == ProductEnum.TABLE) {
+                    Factory.tables += 2;
+                } else if (this.productType == ProductEnum.WARDROBE) {
+                    Factory.wardrobes += 1;
+                }
 
+            }
         }
-    }
 
     @Override
     public void accept(Visitor visitor) {
@@ -156,5 +155,13 @@ public class Line implements Observer, Entity{
 
     public void setProductType(ProductEnum productType) {
         this.productType = productType;
+    }
+
+    public boolean isWorking() {
+        return isWorking;
+    }
+
+    public void setWorking(boolean working) {
+        isWorking = working;
     }
 }
