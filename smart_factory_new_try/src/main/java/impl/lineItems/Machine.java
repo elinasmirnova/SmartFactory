@@ -4,11 +4,8 @@ import impl.Line;
 import impl.enums.MachineState;
 import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
-import impl.events.FinishRepairEvent;
-import impl.events.StartRepairEvent;
 import impl.visitor.Visitor;
 
-import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
 public abstract class Machine extends LineItem {
@@ -24,6 +21,10 @@ public abstract class Machine extends LineItem {
 
     public Machine(int id, String name) {
         super(id, name);
+    }
+
+    public Machine(int condition) {
+        this.condition = condition;
     }
 
     public int getCondition() {
@@ -54,9 +55,16 @@ public abstract class Machine extends LineItem {
         this.state = state;
     }
 
-//    public int countRepairTime() {
-//        getCondition()
-//    }
+    public int countRepairTime() {
+        if (0 < this.getCondition() && this.getCondition() < 30) {
+            repairTime = 3;
+        } else if (30 < this.getCondition() && this.getCondition() < 60) {
+            repairTime = 2;
+        } else {
+            repairTime = 1;
+        }
+        return repairTime;
+    }
 
     @Override
     public void work() {
@@ -75,7 +83,7 @@ public abstract class Machine extends LineItem {
             } else {
                 int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
                 condition -= 5 + randomNum;
-                if (condition < 30) {
+                if (condition < 10) {
                     System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
                     setState(MachineState.BROKEN);
                     this.getLine().setWorking(false);

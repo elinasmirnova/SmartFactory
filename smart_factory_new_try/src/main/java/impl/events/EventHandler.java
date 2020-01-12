@@ -64,8 +64,9 @@ public class EventHandler implements Observer {
                     //increases every tick
                     timeToFix += 1;
                     //when equals to time needed to fix the machine --> stop
-                    System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + startRepairEvent.getMachine().getRepairTime() + " TICKS TO BE FIXED");
-                    if (startRepairEvent.getMachine().getRepairTime() == timeToFix) {
+                    int countedTimeToFix = startRepairEvent.getMachine().countRepairTime();
+                    System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + countedTimeToFix + " TICKS TO BE FIXED");
+                    if (countedTimeToFix == timeToFix) {
                         repairHandler.repair(startRepairEvent.getMachine());
                         timeToFix = 0;
                     }

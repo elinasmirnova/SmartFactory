@@ -30,6 +30,9 @@ public abstract class LineItem implements Observer, Entity {
         this.name = name;
     }
 
+    public LineItem() {
+    }
+
     public int getId() {
         return id;
     }

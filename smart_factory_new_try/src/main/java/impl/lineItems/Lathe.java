@@ -9,6 +9,10 @@ public class Lathe extends Machine {
         super(id, name);
     }
 
+    public Lathe(int condition) {
+        super(condition);
+    }
+
     public int getConsumptionPerTick() {
         return oil*120+ec*40;
     }
