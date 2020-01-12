@@ -15,9 +15,7 @@ import impl.lineItems.*;
 import impl.product.Product;
 import impl.repairman.RepairmenPool;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -170,7 +168,7 @@ public class Report implements Observer {
         for (Line line : factory.getLines()) {
             lines.put(line.getId(), line.getProductType());
         }
-        // Line items
+        // Items
         for (LineItem item : items) {
             lineItems.put(item.getId(), item.getType());
         }
@@ -199,6 +197,8 @@ public class Report implements Observer {
     }
 
     public void saveItems(List<LineItem> items) {
+//        System.out.println("\n\n\n ITEMS: \n"+items.size()+"\n");
+
         this.items = items;
     }
 
@@ -207,4 +207,5 @@ public class Report implements Observer {
 //        ArrayList<Integer> outages = new ArrayList<>();
 //        ArrayList<Integer>
 //    }
+
 }
