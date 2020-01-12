@@ -67,7 +67,8 @@ public class Line implements Observer, Entity{
     public void reorderLineItems(ProductEnum type) {
         System.out.println("Got the request for a new batch of products");
         workingItems.forEach(i -> tick.detach(i));
-        factory.getAvailableLineItems().addAll(workingItems); //return working items to available line items list
+        factory.getAvailableLineItems().addAll(workingItems);
+        workingItems.clear();//return working items to available line items list
         this.setLineItems(type);
     }
 

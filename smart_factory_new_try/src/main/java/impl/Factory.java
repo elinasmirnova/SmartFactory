@@ -132,13 +132,13 @@ public class Factory implements Observer, Entity{
 
     @Override
     public void update() {
-//        if (t.getCurrentTick() % tickToReorder == 0 ) {
-//            if (lines.get(0).checkIfAllMachinesAreWorking()) {
-//                lines.get(0).reorderLineItems(ProductEnum.TABLE);
-//            } else {
-//                tickToReorder++;
-//            }
-//        }
+        if (t.getCurrentTick() % tickToReorder == 0 ) {
+            if (lines.get(0).checkIfAllMachinesAreWorking()) {
+                lines.get(0).reorderLineItems(ProductEnum.TABLE);
+            } else {
+                tickToReorder++;
+            }
+        }
         if (t.getCurrentTick()%100 == 0) {
             accept(inspector);
             report.generateConsumptionReport(1,10);

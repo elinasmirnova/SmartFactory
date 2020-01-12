@@ -45,7 +45,7 @@ public abstract class LineItem implements Observer, Entity {
         if (this instanceof Machine) {
             if (((Machine) this).getState().equals(MachineState.UNDER_REPAIR)) {
                 eventHandler.addEvent(new StartRepairEvent("Start Repair", (Machine) this));
-                System.out.println("Machine" + this.getName() + " with id " + this.getId() + " state is changed to Under Repair");
+               // System.out.println("Machine" + this.getName() + " with id " + this.getId() + " state is changed to Under Repair");
 
             } else if (((Machine) this).getState().equals(MachineState.AFTER_REPAIR)) {
                 eventHandler.addEvent(new FinishRepairEvent("Finish Repair", (Machine) this));
