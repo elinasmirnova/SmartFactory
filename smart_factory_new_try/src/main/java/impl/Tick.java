@@ -1,5 +1,8 @@
 package impl;
 
+import impl.memento.MachineStateCaretaker;
+import impl.memento.MachineStateHistory;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,9 +21,17 @@ public class Tick {
 
     public void run() {
         for (currentTick = 1; currentTick <= 200; currentTick++) {
+            if (currentTick == 155) {
+                System.out.println("Здесь");
+            }
             System.out.println("Tick" + currentTick);
             notifyObservers();
         }
+        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(10));
+        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(20));
+        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(30));
+        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(40));
+
     }
 
     public void attach(Observer entity) {observers.add(entity);}

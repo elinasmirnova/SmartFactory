@@ -52,17 +52,12 @@ public class EventHandler implements Observer {
                     System.out.println("Got breakdown event");
                     BreakdownEvent breakdownEvent = (BreakdownEvent) eventQueue.get(i);
                     queue.getMachineQueue().add(breakdownEvent.getMachine());
-                    if (i == eventQueue.size()-1) {
-                        repairHandler.startRepair();
-                    }
-
-
                 }
                 else if (eventQueue.get(i).getType().equals("Start Repair")){
                     System.out.println("Got start repair event");
                     StartRepairEvent startRepairEvent = (StartRepairEvent) eventQueue.get(i);
                     //increases every tick
-                    timeToFix += eventQueue.get(i).getMachine().getRepairTime()+((100 - eventQueue.get(i).getMachine().getCondition())/20);
+                    timeToFix += 1;
                     //when equals to time needed to fix the machine --> stop
                     int countedTimeToFix = startRepairEvent.getMachine().countRepairTime();
                     System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + countedTimeToFix + " TICKS TO BE FIXED");
@@ -76,10 +71,13 @@ public class EventHandler implements Observer {
                     FinishRepairEvent finisRepairEvent = (FinishRepairEvent) eventQueue.get(i);
                     finisRepairEvent.getMachine().setState(MachineState.WORKING);
                 }
+                if (i == eventQueue.size()-1 && !queue.getMachineQueue().isEmpty()) {
+                    repairHandler.startRepair();
+                }
                 i+=1;
             }
             eventQueue.clear();
-            System.out.println("AFTER EVERY TICK EVENT QUEUE MUST BE EMPTY:" + eventQueue);
+           // System.out.println("AFTER EVERY TICK EVENT QUEUE MUST BE EMPTY:" + eventQueue);
 
         }
     }

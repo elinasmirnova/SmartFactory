@@ -33,7 +33,7 @@ public class Inspector implements Visitor {
     public void visit(Machine machine) {
 //        LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
         System.out.println("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
-        if (machine.getCondition() <= 30) {
+        if (machine.getCondition() <= 30 && machine.getState().equals(MachineState.WORKING)) {
             machine.setState(MachineState.BROKEN);
             eventHandler.addEvent(new BreakdownEvent("Breakdown", machine));
         }

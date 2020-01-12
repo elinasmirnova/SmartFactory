@@ -18,6 +18,7 @@ public class Line implements Observer, Entity{
     private List<LineItem> workingItems = new ArrayList<>();
     private EventHandler handler = EventHandler.getInstance();
     private Tick tick = Tick.getInstance();
+   // private MachineStateHistory history = MachineStateHistory.getInstance();
     private ProductEnum productType;
     private boolean isWorking = true;
     private Product product;
@@ -94,35 +95,24 @@ public class Line implements Observer, Entity{
 
     @Override
     public void update() {
+        if (checkIfAllMachinesAreWorking()) {
+            workingItems.get(0).setStarting(true);
+        }
+        if (tick.getCurrentTick() != 1) {
+            factory.addProductUnits(product);
+        }
+        //history.saveMachineStates(getMachines());
+    }
+
+    public boolean checkIfAllMachinesAreWorking() {
         int count = 0;
         for (LineItem item : workingItems) {
             if (item instanceof Machine && ((Machine) item).getState().equals(MachineState.WORKING))  {
                 count++;
             }
         }
-        if (count == getMachines().size()) {
-            workingItems.get(0).setStarting(true);
-        }
-        // Event lastEvent = history.get(history.size() - 1);
-//        for (LineItem item : workingItems) {
-//            if (item instanceof Machine) {
-//                if (((Machine) item).getState().equals(MachineState.AFTER_REPAIR) || ((Machine) item).getState().equals(MachineState.WORKING)) {
-//                    LineItem theFirst = item;
-//                }
-//            }
-//        }
-//        for (Event event : handler.getEventHistory()) {
-//            if (event.getType().equals("Finish Repair")) {
-//                LineItem theFirst = event.getMachine().getNextLineItem();
-//                theFirst.setStarting(true);
-//                setFirst = true;
-//                break;
-//            }
-//        }
-            if (tick.getCurrentTick() != 1) {
-                factory.addProductUnits(product);
-            }
-        }
+        return count == getMachines().size();
+    }
 
     @Override
     public void accept(Visitor visitor) {
@@ -163,5 +153,9 @@ public class Line implements Observer, Entity{
 
     public Product getProduct() {
         return product;
+    }
+
+    public Factory getFactory() {
+        return factory;
     }
 }

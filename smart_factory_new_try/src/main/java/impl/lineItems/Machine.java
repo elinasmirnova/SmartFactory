@@ -1,7 +1,9 @@
 package impl.lineItems;
 
+import impl.Factory;
 import impl.Line;
 import impl.enums.MachineState;
+import impl.enums.ProductEnum;
 import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
 import impl.visitor.Visitor;
@@ -70,35 +72,24 @@ public abstract class Machine extends LineItem {
 
     @Override
     public void work() {
-//        if (getState().equals(MachineState.UNDER_REPAIR)) {
-//            eventHandler.addEvent(new StartRepairEvent("Start Repair", this));
-//            System.out.println("Machine" + this.getName() + " with id " + this.getId() + " state is changed to Under Repair");
-//
-//
-//        } else if (getState().equals(MachineState.AFTER_REPAIR) ) {
-//            eventHandler.addEvent(new FinishRepairEvent("Finish Repair", this));
-//            // continue production on this line
-//            this.setState(MachineState.WORKING);
-//        } else {
-            if (getNextLineItem() == null) {
-                System.out.println("The batch is done");
-            } else {
-                int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
-                condition -= 5 + randomNum;
-                if (condition < 10) {
-                    System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
-                    setState(MachineState.BROKEN);
-                    this.getLine().setWorking(false);
-                    eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
-                    //stop production on the line
+        if (getNextLineItem() == null) {
+            System.out.println("The batch is done");
+            this.getLine().getFactory().addProductUnits(this.getLine().getProduct());
+        } else {
+            int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
+            condition -= 5 + randomNum;
+            if (condition < 10) {
+                System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
+                setState(MachineState.BROKEN);
+                this.getLine().setWorking(false);  //stop production on the line
+                eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
 
-                } else {
-                    System.out.println(this.getName() + " with id " + this.getId() + " is working");
-                    getNextLineItem().work();
-                }
+            } else {
+                System.out.println(this.getName() + " with id " + this.getId() + " is working");
+                getNextLineItem().work();
             }
         }
-   // }
+    }
 
     @Override
     public void accept(Visitor visitor) {
@@ -108,5 +99,6 @@ public abstract class Machine extends LineItem {
     public abstract int getConsumptionPerTick();
 
     public abstract int getOil();
+
     public abstract int getEc();
 }

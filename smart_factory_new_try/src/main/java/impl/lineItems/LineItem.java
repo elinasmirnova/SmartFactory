@@ -42,7 +42,6 @@ public abstract class LineItem implements Observer, Entity {
     }
 
     public void update() {
-        //history = EventHandler.getInstance().getEventHistory();
         if (this instanceof Machine) {
             if (((Machine) this).getState().equals(MachineState.UNDER_REPAIR)) {
                 eventHandler.addEvent(new StartRepairEvent("Start Repair", (Machine) this));
@@ -50,23 +49,16 @@ public abstract class LineItem implements Observer, Entity {
 
             } else if (((Machine) this).getState().equals(MachineState.AFTER_REPAIR)) {
                 eventHandler.addEvent(new FinishRepairEvent("Finish Repair", (Machine) this));
-                // continue production on this line
                 ((Machine) this).setState((MachineState.WORKING));
                 this.setStarting(true);
-                line.setWorking(true);
+                line.setWorking(true); // continue production on this line
             }
             if (line.isWorking()) {
-                if(isStarting) {
+                if (isStarting) {
                     isStarting = false;
                     this.work();
                 }
             }
-//            if (this instanceof Machine) {
-//                if (((Machine) this).getState().equals(MachineState.UNDER_REPAIR)) {
-//                    System.out.println("Repair in progress");
-//                }
-//            }
-
         }
     }
 

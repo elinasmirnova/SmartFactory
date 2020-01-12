@@ -32,7 +32,7 @@ public class Manager implements Visitor {
     public void visit(Machine machine) {
 //        LOG.info("Manager visited machine: " + machine.getName() + " with id " + machine.getId());
         System.out.println("Manager visited machine: " + machine.getName() + " with id " + machine.getId());
-        if (machine.getCondition() <= 50) {
+        if (machine.getCondition() <= 50 && machine.getState().equals(MachineState.WORKING)) {
             machine.setState(MachineState.BROKEN);
             eventHandler.addEvent(new BreakdownEvent("Breakdown", machine));
         }
