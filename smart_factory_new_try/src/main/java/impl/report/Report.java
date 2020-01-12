@@ -26,18 +26,15 @@ public class Report implements Observer {
     private Factory factory;
     private List<LineItem> items;
     private String path = "src/";
-    //    private FactoryConfiguration factoryConfiguration;
 
     private HashMap<Integer, HashMap<Integer, Integer>> consumptionHistory = new HashMap<>();
 
     public Report(Factory factory) {
         this.factory = factory;
         tick.attach(this);
-//        factoryConfiguration = new FactoryConfiguration(factory);
     }
 
     public void update() {
-
         saveConsumption();
     }
 
@@ -64,6 +61,11 @@ public class Report implements Observer {
         return lineConsumption;
     }
 
+    /**
+     * Generuje report o spotrebe tovarny
+     * @param from
+     * @param to
+     */
     public void generateConsumptionReport(int from, int to) {
         HashMap<Integer, Integer> lineTotal = consumptionHistory.get(from);
         Integer factoryTotal = 0;
@@ -95,6 +97,12 @@ public class Report implements Observer {
         }
     }
 
+    /**
+     *
+     * Generuje report eventu za urcite obdobi
+     * @param from
+     * @param to
+     */
     public void generateEventReport(int from, int to) {
         ArrayList<Event> allEvents = EventHandler.getInstance().getEventHistory();
         ArrayList<Event> intervalEvents = new ArrayList<>();
@@ -160,6 +168,9 @@ public class Report implements Observer {
         return machines;
     }
 
+    /**
+     * Vygeneruje konfiguraci tovarny
+     */
     public void generateFactoryConfiguration() {
         HashMap<Integer, ProductEnum> lines = new HashMap<>();
         HashMap<Integer, String> lineItems = new HashMap<>();
@@ -199,14 +210,7 @@ public class Report implements Observer {
 
     public void saveItems(List<LineItem> items) {
 //        System.out.println("\n\n\n ITEMS: \n"+items.size()+"\n");
-
         this.items = items;
     }
-
-//    public void generateOutagesReport() {
-//        HashMap<Integer, Event> eventHistory = new HashMap<>();
-//        ArrayList<Integer> outages = new ArrayList<>();
-//        ArrayList<Integer>
-//    }
 
 }

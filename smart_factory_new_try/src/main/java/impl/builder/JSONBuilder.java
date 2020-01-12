@@ -37,6 +37,10 @@ public class JSONBuilder implements Builder {
     private static int idCounter = 0;
 
 
+    /**
+     * Postavi tovarnu podle konfigurace v souboru
+     * @param filename
+     */
     public JSONBuilder(String filename) {
         // JSON file to Java object
         Object obj = null;
@@ -62,14 +66,12 @@ public class JSONBuilder implements Builder {
     @Override
     public void createLines() {
         linesConfig.forEach((k, v) -> lines.add(new Line(factory, Integer.parseInt(k), stringToProduct(v))));
-        lines.forEach(entry -> System.out.println(entry.getId()));
         factory.setLines(lines);
     }
 
     @Override
     public void createLineItems() {
         items.forEach((k, v) -> createItem(Integer.parseInt(k), v));
-        System.out.println("\n\n\n ITEMS: \n"+items.size()+"\n");
         factory.setAvailableLineItems(availableLineItems);
     }
 

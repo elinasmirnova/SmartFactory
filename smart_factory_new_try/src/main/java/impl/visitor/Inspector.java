@@ -7,20 +7,14 @@ import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
 import impl.lineItems.Machine;
 import impl.lineItems.Worker;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * Inspector visits machines in order from the most damaged and logs their condition
+ * Inspector navstevuje stroje tovarny, pokud je nejaky stroj poskozen na 30% posle ho opravit
  */
 public class Inspector implements Visitor {
-//    private int id;
     private String name = "Lera Ch.";
     private static Inspector instance;
     private EventHandler eventHandler = EventHandler.getInstance();
-
-//    private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
-//    Logger logger = Logger.getLogger(MyClass.class.getName());
 
     public static Inspector getInstance() {
         if (instance == null) {
@@ -31,8 +25,7 @@ public class Inspector implements Visitor {
 
     @Override
     public void visit(Machine machine) {
-//        LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
-        System.out.println("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
+        System.out.println("\nInspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
         if (machine.getCondition() <= 30 && machine.getState().equals(MachineState.WORKING)) {
             machine.setState(MachineState.BROKEN);
             eventHandler.addEvent(new BreakdownEvent("Breakdown", machine));
