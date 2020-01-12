@@ -9,10 +9,6 @@ public interface Builder {
 
     void setRepairmen();
 
-    void setDirector();
-
-    void setInspection();
-
     void startTicking();
 }
 

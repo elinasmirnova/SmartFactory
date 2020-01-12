@@ -15,9 +15,7 @@ import impl.lineItems.*;
 import impl.product.Product;
 import impl.repairman.RepairmenPool;
 
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.Writer;
+import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.*;
@@ -27,6 +25,7 @@ public class Report implements Observer {
     private Tick tick = Tick.getInstance();
     private Factory factory;
     private List<LineItem> items;
+    private String path = "src/";
     //    private FactoryConfiguration factoryConfiguration;
 
     private HashMap<Integer, HashMap<Integer, Integer>> consumptionHistory = new HashMap<>();
@@ -87,7 +86,7 @@ public class Report implements Observer {
         jsonObject.addProperty("factoryTotal", factoryTotal);
 
         try {
-            Writer writer = new FileWriter("/Users/valta/School/OMO/smart_factory/smart_factory_new_try/src/consumption.json");
+            Writer writer = new FileWriter(path+"consumption.json");
             gson.toJson(jsonObject, writer);
             writer.flush();
             writer.close();
@@ -137,7 +136,7 @@ public class Report implements Observer {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
-            Writer writer = new FileWriter("/Users/valta/School/OMO/smart_factory/smart_factory_new_try/src/events.json");
+            Writer writer = new FileWriter(path+"events.json");
             gson.toJson(eventsSorted, writer);
             writer.flush();
             writer.close();
@@ -170,7 +169,7 @@ public class Report implements Observer {
         for (Line line : factory.getLines()) {
             lines.put(line.getId(), line.getProductType());
         }
-        // Line items
+        // Items
         for (LineItem item : items) {
             lineItems.put(item.getId(), item.getType());
         }
@@ -189,7 +188,7 @@ public class Report implements Observer {
         jsonObject.addProperty("repairmen", repairmen);
 
         try {
-            Writer writer = new FileWriter("/Users/valta/School/OMO/smart_factory/smart_factory_new_try/src/configuration.json");
+            Writer writer = new FileWriter(path+"configuration.json");
             gson.toJson(jsonObject, writer);
             writer.flush();
             writer.close();
@@ -199,6 +198,8 @@ public class Report implements Observer {
     }
 
     public void saveItems(List<LineItem> items) {
+//        System.out.println("\n\n\n ITEMS: \n"+items.size()+"\n");
+
         this.items = items;
     }
 
@@ -207,4 +208,5 @@ public class Report implements Observer {
 //        ArrayList<Integer> outages = new ArrayList<>();
 //        ArrayList<Integer>
 //    }
+
 }

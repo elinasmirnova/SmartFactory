@@ -9,6 +9,7 @@ import impl.visitor.Inspector;
 import impl.visitor.Manager;
 import impl.visitor.Visitor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Factory implements Observer, Entity{
@@ -25,6 +26,7 @@ public class Factory implements Observer, Entity{
     private int tables = 0;
     private int wardrobes = 0;
     private int tickToReorder = 66;
+    private List<LineItem> allItems = new ArrayList<LineItem>();
 
     private Manager manager = Manager.getInstance();
     private Inspector inspector = Inspector.getInstance();
@@ -84,7 +86,6 @@ public class Factory implements Observer, Entity{
 
     public void setAvailableLineItems(List<LineItem> availableLineItems) {
         this.availableLineItems = availableLineItems;
-        report.saveItems(availableLineItems);
     }
 
     public void addAvailableLineItem(LineItem item) {
@@ -142,11 +143,18 @@ public class Factory implements Observer, Entity{
         if (t.getCurrentTick()%100 == 0) {
             accept(inspector);
             report.generateConsumptionReport(1,10);
-            report.generateFactoryConfiguration();
             report.generateEventReport(1,50);
         } else if (t.getCurrentTick()%50 == 0) {
             accept(manager);
+        } else if (t.getCurrentTick() == 10) {
+            report.generateFactoryConfiguration();
         }
     }
 
+    public void reportItems(List<LineItem> availableLineItems) {
+        for (LineItem item : availableLineItems) {
+            allItems.add(item);
+        }
+        report.saveItems(allItems);
+    }
 }

@@ -11,6 +11,7 @@ import impl.lineItems.Worker;
 import impl.product.Chair;
 import impl.repairman.Repairman;
 import impl.repairman.RepairmenPool;
+import impl.report.Report;
 
 import java.util.ArrayList;
 import java.util.LinkedList;
@@ -22,6 +23,8 @@ public class Factory1Builder implements Builder {
     private List<LineItem> availableLineItems = new ArrayList<>();
     private List<Line> lines = new ArrayList<>();
     private static int idCounter = 0;
+    private Report report;
+
 
     @Override
     public void createFactory() {
@@ -49,6 +52,7 @@ public class Factory1Builder implements Builder {
         availableLineItems.add(new Worker(idCounter++,"Operator"));
         availableLineItems.add(new Worker(idCounter++,"Operator"));
         factory.setAvailableLineItems(availableLineItems);
+        factory.reportItems(availableLineItems);
     }
 
     @Override
@@ -60,15 +64,6 @@ public class Factory1Builder implements Builder {
 //        repairmen.add(new Repairman(4, true));
         RepairmenPool.getInstance().setAvailableRepairmen(repairmen);
         System.out.println("Available repairmen after initializing:" + RepairmenPool.getInstance().getAvailableRepairmen().toString());
-    }
-
-    @Override
-    public void setDirector() {
-    }
-
-    @Override
-    public void setInspection() {
-
     }
 
     @Override
