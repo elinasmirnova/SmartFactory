@@ -7,6 +7,7 @@ import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
 import impl.lineItems.Machine;
 import impl.lineItems.Worker;
+import impl.repairman.Queue;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,6 +19,7 @@ public class Inspector implements Visitor {
     private String name = "Lera Ch.";
     private static Inspector instance;
     private EventHandler eventHandler = EventHandler.getInstance();
+    private Queue queue = Queue.getInstance();
 
 //    private static final Logger LOG = LoggerFactory.getLogger(Manager.class);
 //    Logger logger = Logger.getLogger(MyClass.class.getName());
@@ -34,8 +36,11 @@ public class Inspector implements Visitor {
 //        LOG.info("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
         System.out.println("Inspector visited machine: " + machine.getName() + "(" + machine.getId() + ") - condition: " + machine.getCondition());
         if (machine.getCondition() <= 30 && machine.getState().equals(MachineState.WORKING)) {
-            machine.setState(MachineState.BROKEN);
-            eventHandler.addEvent(new BreakdownEvent("Breakdown", machine));
+            if (!queue.getMachineQueue().contains(machine)){
+                machine.setState(MachineState.BROKEN);
+                eventHandler.addEvent(new BreakdownEvent("Breakdown", machine));
+            }
+
         }
     }
 

@@ -2,8 +2,6 @@ package impl;
 
 import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
-import impl.memento.MachineStateCaretaker;
-import impl.memento.MachineStateHistory;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -24,7 +22,7 @@ public class Tick {
 
     public void run() {
         for (currentTick = 1; currentTick <= 200; currentTick++) {
-            if (currentTick == 68) {
+            if (currentTick == 155) {
                 System.out.println("здесь");
             }
             System.out.println("Tick" + currentTick);

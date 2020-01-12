@@ -44,31 +44,35 @@ public class EventHandler implements Observer {
     public void handle(){
         if (eventQueue.isEmpty()){
             System.out.println("There are no events to handle");
+            if (!queue.getMachineQueue().isEmpty()){
+                System.out.println("we still have broken machines in the queue...");
+                repairHandler.startRepair();
+            }
         }
         else{
             int i = 0;
             while(i < eventQueue.size()){
                 if (eventQueue.get(i).getType().equals("Breakdown")){
-                    System.out.println("Got breakdown event");
                     BreakdownEvent breakdownEvent = (BreakdownEvent) eventQueue.get(i);
+                    System.out.println("Got breakdown event for machine " + breakdownEvent.getMachine().getName());
                     queue.getMachineQueue().add(breakdownEvent.getMachine());
                 }
                 else if (eventQueue.get(i).getType().equals("Start Repair")){
-                    System.out.println("Got start repair event");
                     StartRepairEvent startRepairEvent = (StartRepairEvent) eventQueue.get(i);
                     //increases every tick
                     timeToFix += 1;
                     //when equals to time needed to fix the machine --> stop
                     int countedTimeToFix = startRepairEvent.getMachine().countRepairTime();
                     System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + countedTimeToFix + " TICKS TO BE FIXED");
-                    if (countedTimeToFix == timeToFix) {
+                    System.out.println("IT'S THE TICK NUMBER " + timeToFix);
+                    if (countedTimeToFix <= timeToFix) {
                         repairHandler.repair(startRepairEvent.getMachine());
                         timeToFix = 0;
                     }
 
                 } else if(eventQueue.get(i).getType().equals("Finish Repair")) {
-                    //System.out.println("Got finish repair event");
                     FinishRepairEvent finisRepairEvent = (FinishRepairEvent) eventQueue.get(i);
+                    System.out.println("Got finish repair event for machine " + finisRepairEvent.getMachine().getName());
                     finisRepairEvent.getMachine().setState(MachineState.WORKING);
                 }
                 if (i == eventQueue.size()-1 && !queue.getMachineQueue().isEmpty()) {

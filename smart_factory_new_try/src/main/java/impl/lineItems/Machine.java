@@ -6,6 +6,7 @@ import impl.enums.MachineState;
 import impl.enums.ProductEnum;
 import impl.events.BreakdownEvent;
 import impl.events.EventHandler;
+import impl.repairman.Queue;
 import impl.visitor.Visitor;
 
 import java.util.concurrent.ThreadLocalRandom;
@@ -20,6 +21,7 @@ public abstract class Machine extends LineItem {
     private EventHandler eventHandler = EventHandler.getInstance();
     private int oil;
     private int ec;
+    private Queue queue = Queue.getInstance();
 
 
 
@@ -79,10 +81,14 @@ public abstract class Machine extends LineItem {
             int randomNum = ThreadLocalRandom.current().nextInt(1, 5 + 1);
             condition -= 5 + randomNum;
             if (condition < 10) {
-                System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
-                setState(MachineState.BROKEN);
-                this.getLine().setWorking(false);  //stop production on the line
-                eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
+                if (!queue.getMachineQueue().contains(this) && !this.getState().equals(MachineState.UNDER_REPAIR)){
+
+                    System.out.println(this.getName() + " with id " + this.getId() + " is broken :(");
+                    setState(MachineState.BROKEN);
+                    this.getLine().setWorking(false);  //stop production on the line
+                    eventHandler.addEvent(new BreakdownEvent("Breakdown", this));
+                }
+
 
             } else {
                 System.out.println(this.getName() + " with id " + this.getId() + " is working");
