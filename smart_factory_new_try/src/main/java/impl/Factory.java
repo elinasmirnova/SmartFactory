@@ -2,6 +2,7 @@ package impl;
 
 import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
+import impl.product.Product;
 import impl.repairman.RepairmenPool;
 import impl.report.Report;
 import impl.visitor.Inspector;
@@ -19,10 +20,10 @@ public class Factory implements Observer, Entity{
     private List<Line> lines;
     private List<LineItem> availableLineItems;
     private RepairmenPool pool = RepairmenPool.getInstance();
-    private static int tick = 0;
-    public static int chairs = 0;
-    public static int tables = 0;
-    public static int wardrobes = 0;
+    private int tick = 0;
+    private int chairs = 0;
+    private int tables = 0;
+    private int wardrobes = 0;
 
     private Manager manager = Manager.getInstance();
     private Inspector inspector = Inspector.getInstance();
@@ -48,7 +49,27 @@ public class Factory implements Observer, Entity{
         this.lines = lines;
     }
 
-//    public static Factory getInstance(String name) {
+    public int getChairs() {
+        return chairs;
+    }
+
+    public int getTables() {
+        return tables;
+    }
+
+    public int getWardrobes() {
+        return wardrobes;
+    }
+
+    public void addProductUnits(Product product) {
+        switch (product.getId()) {
+            case 1: chairs += product.getUnitsPerTick();
+            case 2: tables += product.getUnitsPerTick();
+            case 3: wardrobes += product.getUnitsPerTick();
+        }
+    }
+
+    //    public static Factory getInstance(String name) {
 ////        if (instance == null) {
 ////            instance = new Factory(name);
 ////        }
@@ -62,6 +83,7 @@ public class Factory implements Observer, Entity{
 
     public void setAvailableLineItems(List<LineItem> availableLineItems) {
         this.availableLineItems = availableLineItems;
+        report.saveItems(availableLineItems);
     }
 
     public void addAvailableLineItem(LineItem item) {
@@ -108,26 +130,16 @@ public class Factory implements Observer, Entity{
 
     }
 
-    public int getTick() {
-        return tick;
-    }
-
-    public void setTick(int tick) {
-        this.tick = tick;
-    }
-
-    public int getTotalMaterial() {
-        int total = chairs * 1 + tables * 3 + wardrobes * 4;
-        return total;
-    }
-
     @Override
     public void update() {
         if (t.getCurrentTick()%100 == 0) {
             accept(inspector);
             report.generateConsumptionReport(1,10);
+            report.generateFactoryConfiguration();
+            report.generateEventReport(1,50);
         } else if (t.getCurrentTick()%50 == 0) {
             accept(manager);
         }
     }
+
 }

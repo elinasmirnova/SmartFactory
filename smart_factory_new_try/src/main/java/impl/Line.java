@@ -6,6 +6,7 @@ import impl.events.Event;
 import impl.events.EventHandler;
 import impl.lineItems.LineItem;
 import impl.lineItems.Machine;
+import impl.product.Product;
 import impl.visitor.Visitor;
 
 import java.util.*;
@@ -19,11 +20,13 @@ public class Line implements Observer, Entity{
     private Tick tick = Tick.getInstance();
     private ProductEnum productType;
     private boolean isWorking = true;
+    private Product product;
 
-    public Line(Factory factory, int id, ProductEnum type) {
+    public Line(Factory factory, int id, Product product) {
         this.factory = factory;
         this.id = id;
-        this.productType = type;
+        this.product = product;
+        this.productType = product.getType();
         tick.attach(this);
     }
 
@@ -117,14 +120,7 @@ public class Line implements Observer, Entity{
 //            }
 //        }
             if (tick.getCurrentTick() != 1) {
-                if (this.productType == ProductEnum.CHAIR) {
-                    Factory.chairs += 3; //TODO: implementovat getUnitsPerTick a udelat tak, aby se to volalo po vytvareni serie
-                } else if (this.productType == ProductEnum.TABLE) {
-                    Factory.tables += 2;
-                } else if (this.productType == ProductEnum.WARDROBE) {
-                    Factory.wardrobes += 1;
-                }
-
+                factory.addProductUnits(product);
             }
         }
 
@@ -163,5 +159,9 @@ public class Line implements Observer, Entity{
 
     public void setWorking(boolean working) {
         isWorking = working;
+    }
+
+    public Product getProduct() {
+        return product;
     }
 }

@@ -5,6 +5,12 @@ import impl.visitor.Visitor;
 public class Worker extends LineItem {
     private int salary;
     private final int typeId = 1;
+    private final String type = "WORKER";
+
+    @Override
+    public String getType() {
+        return type;
+    }
 
     public Worker(int id, String name) {
         super(id, name);

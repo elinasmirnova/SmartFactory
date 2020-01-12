@@ -1,8 +1,16 @@
 package impl.lineItems;
 
+import impl.Constants;
+
 public class Miller extends Machine {
     private final int oil = 4;
     private final int ec = 2;
+    private final String type = "MILLER";
+
+    @Override
+    public String getType() {
+        return type;
+    }
 
 
     public Miller(int id, String name) {
@@ -11,7 +19,7 @@ public class Miller extends Machine {
     }
 
     public int getConsumptionPerTick() {
-        return oil*120+ec*40;
+        return oil* Constants.getOilPrice() +ec*Constants.getElectricityPrice();
     }
 
     @Override

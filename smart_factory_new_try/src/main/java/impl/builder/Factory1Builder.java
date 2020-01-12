@@ -8,6 +8,7 @@ import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
 import impl.lineItems.MachineFactory;
 import impl.lineItems.Worker;
+import impl.product.Chair;
 import impl.repairman.Repairman;
 import impl.repairman.RepairmenPool;
 
@@ -29,7 +30,7 @@ public class Factory1Builder implements Builder {
 
     @Override
     public void createLines() {
-        lines.add(new Line(factory, 1, ProductEnum.CHAIR));
+        lines.add(new Line(factory, 1, new Chair()));
         factory.setLines(lines);
 //        lines.add(new Line(factory, 2, ProductEnum.TABLE));
 //        lines.add(new Line(factory, 3, ProductEnum.WARDROBE));
@@ -63,7 +64,6 @@ public class Factory1Builder implements Builder {
 
     @Override
     public void setDirector() {
-        //  TODO: ???
     }
 
     @Override

@@ -103,4 +103,6 @@ public abstract class LineItem implements Observer, Entity {
     }
 
     public abstract void work();
+
+    public abstract String getType();
 }

@@ -12,12 +12,14 @@ public abstract class Machine extends LineItem {
 
     private int condition = 100;
     private int repairTime;
-    private final int typeId = 0;
+//    private final int typeId = 0;
     //private int repairTime;
     private MachineState state = MachineState.WORKING;
     private EventHandler eventHandler = EventHandler.getInstance();
     private int oil;
     private int ec;
+
+
 
     public Machine(int id, String name) {
         super(id, name);
@@ -43,9 +45,9 @@ public abstract class Machine extends LineItem {
         this.repairTime = repairTime;
     }
 
-    public int getTypeId() {
-        return typeId;
-    }
+//    public int getTypeId() {
+//        return typeId;
+//    }
 
     public MachineState getState() {
         return state;
@@ -102,8 +104,6 @@ public abstract class Machine extends LineItem {
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
-
-
 
     public abstract int getConsumptionPerTick();
 

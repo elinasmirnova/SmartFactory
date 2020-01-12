@@ -18,7 +18,7 @@ public class EventHandler implements Observer {
     private Queue queue = Queue.getInstance();
     private RepairHandler repairHandler = new RepairHandler();
     private Tick tick = Tick.getInstance();
-    private List<Event> eventHistory = new ArrayList<>();
+    private ArrayList<Event> eventHistory = new ArrayList<>();
 
     //time spent on fixing the machine
     private int timeToFix = 0;
@@ -62,7 +62,7 @@ public class EventHandler implements Observer {
                     System.out.println("Got start repair event");
                     StartRepairEvent startRepairEvent = (StartRepairEvent) eventQueue.get(i);
                     //increases every tick
-                    timeToFix += 1;
+                    timeToFix += eventQueue.get(i).getMachine().getRepairTime()+((100 - eventQueue.get(i).getMachine().getCondition())/20);
                     //when equals to time needed to fix the machine --> stop
                     int countedTimeToFix = startRepairEvent.getMachine().countRepairTime();
                     System.out.println("THE MACHINE " + startRepairEvent.getMachine().getName() + " NEEDS " + countedTimeToFix + " TICKS TO BE FIXED");
@@ -92,7 +92,11 @@ public class EventHandler implements Observer {
         return eventQueue;
     }
 
-    public List<Event> getEventHistory() {
+    public ArrayList<Event> getEventHistory() {
         return eventHistory;
+    }
+
+    public RepairmenPool getRepairmen() {
+        return repairmen;
     }
 }
