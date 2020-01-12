@@ -2,8 +2,8 @@ package impl;
 
 import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
-import impl.memento.MachineStateCaretaker;
-import impl.memento.MachineStateHistory;
+//import impl.memento.MachineStateCaretaker;
+//import impl.memento.MachineStateHistory;
 
 import java.util.ArrayList;
 import java.util.Collections;

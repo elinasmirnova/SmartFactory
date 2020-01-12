@@ -1,0 +1,33 @@
+{
+  "lines": {
+    "1": 43120
+  },
+  "machineConsumptionStatsPerTick": {
+    "Lathe": {
+      "totalInCZK": 420,
+      "oil": 3,
+      "electricity": 3
+    },
+    "Polisher": {
+      "totalInCZK": 180,
+      "oil": 1,
+      "electricity": 2
+    },
+    "Miller": {
+      "totalInCZK": 480,
+      "oil": 4,
+      "electricity": 2
+    },
+    "Saw": {
+      "totalInCZK": 760,
+      "oil": 6,
+      "electricity": 4
+    },
+    "Sander": {
+      "totalInCZK": 360,
+      "oil": 2,
+      "electricity": 4
+    }
+  },
+  "factoryTotal": 43120
+}

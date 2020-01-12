@@ -1,0 +1,19 @@
+{
+  "factory": "factory1",
+  "lines": {
+    "1": "CHAIR"
+  },
+  "items": {
+    "0": "SAW",
+    "1": "LATHE",
+    "2": "MILLER",
+    "3": "POLISHER",
+    "4": "SANDER",
+    "5": "WORKER",
+    "6": "WORKER",
+    "7": "WORKER",
+    "8": "WORKER",
+    "9": "WORKER"
+  },
+  "repairmen": 2
+}

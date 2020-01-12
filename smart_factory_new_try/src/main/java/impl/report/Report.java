@@ -25,6 +25,7 @@ public class Report implements Observer {
     private Tick tick = Tick.getInstance();
     private Factory factory;
     private List<LineItem> items;
+    private String path = "src/";
     //    private FactoryConfiguration factoryConfiguration;
 
     private HashMap<Integer, HashMap<Integer, Integer>> consumptionHistory = new HashMap<>();
@@ -85,7 +86,7 @@ public class Report implements Observer {
         jsonObject.addProperty("factoryTotal", factoryTotal);
 
         try {
-            Writer writer = new FileWriter("/Users/valta/School/OMO/smart_factory/smart_factory_new_try/src/consumption.json");
+            Writer writer = new FileWriter(path+"consumption.json");
             gson.toJson(jsonObject, writer);
             writer.flush();
             writer.close();
@@ -135,7 +136,7 @@ public class Report implements Observer {
 
         Gson gson = new GsonBuilder().setPrettyPrinting().create();
         try {
-            Writer writer = new FileWriter("/Users/valta/School/OMO/smart_factory/smart_factory_new_try/src/events.json");
+            Writer writer = new FileWriter(path+"events.json");
             gson.toJson(eventsSorted, writer);
             writer.flush();
             writer.close();
@@ -187,7 +188,7 @@ public class Report implements Observer {
         jsonObject.addProperty("repairmen", repairmen);
 
         try {
-            Writer writer = new FileWriter("/Users/valta/School/OMO/smart_factory/smart_factory_new_try/src/configuration.json");
+            Writer writer = new FileWriter(path+"configuration.json");
             gson.toJson(jsonObject, writer);
             writer.flush();
             writer.close();
