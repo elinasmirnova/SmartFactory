@@ -22,7 +22,10 @@ import impl.repairman.Repairman;
 import impl.repairman.RepairmenPool;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.*;
-
+/**
+ * Builds the factory according to the configuration in the file (json).
+ * Implements builder interface.
+ */
 public class JSONBuilder implements Builder {
 
     private String factoryName;
@@ -38,8 +41,8 @@ public class JSONBuilder implements Builder {
 
 
     /**
-     * Postavi tovarnu podle konfigurace v souboru
-     * @param filename
+     * Builds the factory according to the configuration in the file (json).
+     * @param filename name of the file, from which factory should be built.
      */
     public JSONBuilder(String filename) {
         // JSON file to Java object
@@ -73,13 +76,14 @@ public class JSONBuilder implements Builder {
     public void createLineItems() {
         items.forEach((k, v) -> createItem(Integer.parseInt(k), v));
         factory.setAvailableLineItems(availableLineItems);
+        factory.reportItems(availableLineItems);
     }
 
     @Override
     public void setRepairmen() {
         LinkedList<Repairman> repairmen = new LinkedList<>();
         for (int i = 0; i < Math.toIntExact(repairmenConfig); i++) {
-            repairmen.add(new Repairman(++idCounter, true));
+            repairmen.add(new Repairman(++idCounter));
         }
         RepairmenPool.getInstance().setAvailableRepairmen(repairmen);
     }

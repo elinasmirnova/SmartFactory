@@ -10,7 +10,8 @@ import impl.lineItems.Worker;
 import impl.repairman.Queue;
 
 /**
- * Inspector navstevuje stroje tovarny, pokud je nejaky stroj poskozen na 30% posle ho opravit
+ * Inspector visits machines of the factory.
+ * When some machine condition is under 30, then inspector send this machine to repair.
  */
 public class Inspector implements Visitor {
     private String name = "Lera Ch.";

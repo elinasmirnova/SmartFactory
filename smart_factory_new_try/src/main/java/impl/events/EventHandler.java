@@ -29,6 +29,11 @@ public class EventHandler implements Observer {
     }
 
     //singleton
+    /***
+     * get one and the same instance of EventHandler, using the Singleton pattern
+     * @return  the instance of EventHandler
+     */
+
     public static EventHandler getInstance() {
         if (instance == null) {
             instance = new EventHandler();
@@ -36,10 +41,19 @@ public class EventHandler implements Observer {
         return instance;
     }
 
+    /***
+     * add event to eventQueue
+     * @param event received event
+     */
+
     public void addEvent(Event event) {
         eventQueue.add(event);
         eventHistory.add(event); //TODO: event history
     }
+
+    /***
+     * handle events by event type after receiving
+     */
 
     public void handle(){
         if (eventQueue.isEmpty()){

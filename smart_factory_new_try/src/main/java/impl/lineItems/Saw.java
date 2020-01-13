@@ -3,9 +3,10 @@ package impl.lineItems;
 import impl.Constants;
 
 public class Saw extends Machine {
+    /** oil consumption */
     private final int oil = 6;
+    /** electricity consumption */
     private final int ec = 4;
-    private final int repairTime = 1;
     private final String type = "SAW";
 
     @Override
@@ -29,10 +30,6 @@ public class Saw extends Machine {
     @Override
     public int getEc() {
         return ec;
-    }
-    @Override
-    public int getRepairTime() {
-        return repairTime;
     }
 
 }

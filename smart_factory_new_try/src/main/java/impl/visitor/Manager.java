@@ -10,7 +10,8 @@ import impl.lineItems.Machine;
 import impl.lineItems.Worker;
 
 /**
- * Manazer navstevuje entity tovarny, pokud je nejaky stroj poskozen na 50% posle ho opravit
+ * Manager visits entities of the factory.
+ * When some machine condition is under 50, then the manager send this one to repair.
  */
 public class Manager implements Visitor {
     private String name = "Elina S.";

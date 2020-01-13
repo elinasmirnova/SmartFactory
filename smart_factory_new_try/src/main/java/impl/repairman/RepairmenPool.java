@@ -16,6 +16,11 @@ public class RepairmenPool {
     public static RepairmenPool instance;
 
     //singleton: repairmen pool must be only one
+    /***
+     * get one and the same instance of RepairStatus, using the Singleton pattern
+     * @return  the instance of RepairStatus
+     */
+
     public static RepairmenPool getInstance() {
         if (instance == null) {
             instance = new RepairmenPool();
@@ -24,6 +29,11 @@ public class RepairmenPool {
     }
 
     //get the first repairman from the available list
+    /***
+     * get the the first repairman from the available list if it's not empty
+     * @return the first repairman from the available list
+     */
+
     public Repairman getRepairman(){
         if (available.isEmpty()){
             System.out.println("There are no available repairmen now, try again later");
@@ -39,11 +49,21 @@ public class RepairmenPool {
         return null;
     }
 
+    /**
+     * find the repairman by machine he is repairing
+     * @param machine broken machine
+     * @return repairman
+     */
     public Repairman getRepairmanByMachine(Machine machine) {
         return working.stream().filter(repairman -> repairman.getRepairedMachine().equals(machine)).collect(Collectors.toList()).get(0);
     }
 
     //when the machine is fixed return the repairman to the available list
+    /***
+     * return the repairman to the available list when the machine is fixed
+     * @param repairman a working repairman
+     */
+
     public void finishRepair(Repairman repairman){
         available.addFirst(repairman);
         working.remove(repairman);

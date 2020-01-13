@@ -62,9 +62,9 @@ public class Report implements Observer {
     }
 
     /**
-     * Generuje report o spotrebe tovarny
-     * @param from
-     * @param to
+     * Generates report of factory consumption
+     * @param from starting tick, from what should be generated report
+     * @param to last tick
      */
     public void generateConsumptionReport(int from, int to) {
         HashMap<Integer, Integer> lineTotal = consumptionHistory.get(from);
@@ -99,9 +99,9 @@ public class Report implements Observer {
 
     /**
      *
-     * Generuje report eventu za urcite obdobi
-     * @param from
-     * @param to
+     * Generates report of events for certain time of range
+     * @param from the first tick
+     * @param to the last tick
      */
     public void generateEventReport(int from, int to) {
         ArrayList<Event> allEvents = EventHandler.getInstance().getEventHistory();
@@ -169,7 +169,7 @@ public class Report implements Observer {
     }
 
     /**
-     * Vygeneruje konfiguraci tovarny
+     * Generates configuration of the factory
      */
     public void generateFactoryConfiguration() {
         HashMap<Integer, ProductEnum> lines = new HashMap<>();

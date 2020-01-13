@@ -1,8 +1,9 @@
 package impl.builder;
 
+/**
+ * Depending on specification of configuration call appropriate startConfiguration method.
+ */
 public class ConfigDirector {
-
-
     public ConfigDirector() {
         startConfiguration(new Factory1Builder());
     }

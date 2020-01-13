@@ -3,6 +3,8 @@ package impl;
 import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
 import impl.product.Product;
+import impl.product.Table;
+import impl.product.Wardrobe;
 import impl.repairman.RepairmenPool;
 import impl.report.Report;
 import impl.visitor.Inspector;
@@ -11,25 +13,30 @@ import impl.visitor.Visitor;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
+/**
+ * The factory entity, which implements observer (tick) interface and entity (visitor) interface.
+ */
 public class Factory implements Observer, Entity{
 
     private String name;
     private Tick t = Tick.getInstance();
     private Report report = new Report(this);
-    //private static Factory instance = null;
     private List<Line> lines;
     private List<LineItem> availableLineItems;
     private RepairmenPool pool = RepairmenPool.getInstance();
-    private int tick = 0;
     private int chairs = 0;
     private int tables = 0;
     private int wardrobes = 0;
-    private int tickToReorder = 66;
+    private int tickToReorder1 = 66;
+    private int tickToReorder2 = 132;
     private List<LineItem> allItems = new ArrayList<LineItem>();
 
     private Manager manager = Manager.getInstance();
     private Inspector inspector = Inspector.getInstance();
+
+    private static final Logger LOG = Logger.getLogger("LOGGER");
 
     public Factory(String name) {
         this.name = name;
@@ -64,6 +71,10 @@ public class Factory implements Observer, Entity{
         return wardrobes;
     }
 
+    /**
+     * Added to the total amount of products amount of units per tick.
+     * @param product product, what we produce at the moment
+     */
     public void addProductUnits(Product product) {
         switch (product.getId()) {
             case 1: chairs += product.getUnitsPerTick();
@@ -71,14 +82,6 @@ public class Factory implements Observer, Entity{
             case 3: wardrobes += product.getUnitsPerTick();
         }
     }
-
-    //    public static Factory getInstance(String name) {
-////        if (instance == null) {
-////            instance = new Factory(name);
-////        }
-////        return instance;
-////    }
-
 
     public List<LineItem> getAvailableLineItems() {
         return availableLineItems;
@@ -92,11 +95,13 @@ public class Factory implements Observer, Entity{
         getAvailableLineItems().add(item);
     }
 
+    /**
+     * Set and order line items on the each line of the factory by its product type.
+     */
     public void startProduction() {
         for (Line line : lines) {
-            line.setLineItems(line.getProductType());
+            line.setLineItems(line.getProduct());
         }
-      //  lines.get(0).reorderLineItems(ProductEnum.TABLE);
     }
 
     public RepairmenPool getPool() {
@@ -131,13 +136,23 @@ public class Factory implements Observer, Entity{
 
     }
 
+    /**
+     * Updates every tick. If tick is equal to some specific one, then some actions take place.
+     */
     @Override
     public void update() {
-        if (t.getCurrentTick() % tickToReorder == 0 ) {
+        if (t.getCurrentTick() == tickToReorder1) {
             if (lines.get(0).checkIfAllMachinesAreWorking()) {
-                lines.get(0).reorderLineItems(ProductEnum.TABLE);
+                lines.get(0).reorderLineItems(new Table());
             } else {
-                tickToReorder++;
+                tickToReorder1++;
+            }
+        }
+        if (t.getCurrentTick() == tickToReorder2) {
+            if (lines.get(0).checkIfAllMachinesAreWorking()) {
+                lines.get(0).reorderLineItems(new Wardrobe());
+            } else {
+                tickToReorder2++;
             }
         }
         if (t.getCurrentTick()%100 == 0) {

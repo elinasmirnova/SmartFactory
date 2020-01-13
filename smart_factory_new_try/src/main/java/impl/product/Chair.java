@@ -5,6 +5,7 @@ import impl.enums.ProductEnum;
 public class Chair extends Product {
     private final int id = 1;
     private final String name = "Chair";
+    /** Quantity of chairs per one batch */
     private final int unitsPerTick = 3;
     private final int material = 1;
     private final ProductEnum type = ProductEnum.CHAIR;

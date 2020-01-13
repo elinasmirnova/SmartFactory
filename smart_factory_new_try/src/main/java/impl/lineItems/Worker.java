@@ -4,7 +4,6 @@ import impl.visitor.Visitor;
 
 public class Worker extends LineItem {
     private int salary;
-    private final int typeId = 1;
     private final String type = "WORKER";
 
     @Override
@@ -22,6 +21,7 @@ public class Worker extends LineItem {
             System.out.println(this.getName() + " with id " + this.getId()  + " is working") ;
             salary += 200;
             System.out.println("The batch is done");
+            this.getLine().getFactory().addProductUnits(this.getLine().getProduct());
         } else {
             System.out.println(this.getName() + " with id " + this.getId()  + " is working") ;
             salary += 200;

@@ -15,15 +15,9 @@ public abstract class Machine extends LineItem {
 
     private int condition = 100;
     private int repairTime;
-//    private final int typeId = 0;
-    //private int repairTime;
     private MachineState state = MachineState.WORKING;
     private EventHandler eventHandler = EventHandler.getInstance();
-    private int oil;
-    private int ec;
     private Queue queue = Queue.getInstance();
-
-
 
     public Machine(int id, String name) {
         super(id, name);
@@ -41,18 +35,6 @@ public abstract class Machine extends LineItem {
         this.condition = condition;
     }
 
-    public int getRepairTime() {
-        return repairTime;
-    }
-
-    public void setRepairTime(int repairTime) {
-        this.repairTime = repairTime;
-    }
-
-//    public int getTypeId() {
-//        return typeId;
-//    }
-
     public MachineState getState() {
         return state;
     }
@@ -61,6 +43,10 @@ public abstract class Machine extends LineItem {
         this.state = state;
     }
 
+    /**
+     * Get the needed repair time to fix broken machine depending on its condition
+     * @return repair time
+     */
     public int countRepairTime() {
         if (0 < this.getCondition() && this.getCondition() < 30) {
             repairTime = 3;
@@ -72,6 +58,9 @@ public abstract class Machine extends LineItem {
         return repairTime;
     }
 
+    /**
+     * Implementation of chain of responsibility design pattern. Keeping the order of working line items on the line.
+     */
     @Override
     public void work() {
         if (getNextLineItem() == null) {
@@ -97,6 +86,10 @@ public abstract class Machine extends LineItem {
         }
     }
 
+    /**
+     * Implementation of visitor design pattern.
+     * @param visitor
+     */
     @Override
     public void accept(Visitor visitor) {
         visitor.visit(this);

@@ -1,15 +1,13 @@
 package impl;
 
-import impl.enums.ProductEnum;
-import impl.lineItems.LineItem;
 import impl.memento.MachineStateCaretaker;
-import impl.memento.MachineStateHistory;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
+/**
+ * Manages tick in the factory.
+ */
 public class Tick {
     private static Tick instance = null;
     private List<Observer> observers = new ArrayList<>();
@@ -22,25 +20,26 @@ public class Tick {
         return instance;
     }
 
+    /**
+     * Run real simulation and calls update on each entity, which was attached to this tick.
+     */
     public void run() {
         for (currentTick = 1; currentTick <= 200; currentTick++) {
-            if (currentTick == 68) {
+            if (currentTick == 3) {
                 System.out.println("здесь");
             }
             System.out.println("Tick" + currentTick);
             notifyObservers();
         }
-//        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(10));
-//        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(20));
-//        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(30));
-//        System.out.println(MachineStateCaretaker.getInstance().getSanderByTick(40));
-
     }
 
     public void attach(Observer entity) { observers.add(entity); }
 
     public void detach(Observer entity) { observers.remove(entity); }
 
+    /**
+     * Calls update on each observer, which follows this tick.
+     */
     public void notifyObservers() {
             for (Observer observer : (new ArrayList<>(observers))) {
                 observer.update();

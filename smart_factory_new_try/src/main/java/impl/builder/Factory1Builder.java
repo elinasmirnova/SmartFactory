@@ -4,7 +4,6 @@ import impl.Factory;
 import impl.Line;
 import impl.Tick;
 import impl.enums.MachineType;
-import impl.enums.ProductEnum;
 import impl.lineItems.LineItem;
 import impl.lineItems.MachineFactory;
 import impl.lineItems.Worker;
@@ -17,6 +16,10 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+/**
+ * Builds factory and all the necessary entities for starting production.
+ * Implements Builder interface.
+ */
 public class Factory1Builder implements Builder {
     private Factory factory;
     private MachineFactory machineFactory;
@@ -25,12 +28,17 @@ public class Factory1Builder implements Builder {
     private static int idCounter = 0;
     private Report report;
 
-
+    /**
+     * Create new instance of factory.
+     */
     @Override
     public void createFactory() {
         factory = new Factory("factory1");
     }
 
+    /**
+     * Create new lines of the factory.
+     */
     @Override
     public void createLines() {
         lines.add(new Line(factory, 1, new Chair()));
@@ -39,6 +47,9 @@ public class Factory1Builder implements Builder {
 //        lines.add(new Line(factory, 3, ProductEnum.WARDROBE));
     }
 
+    /**
+     * Create new line item (machines and workers) and put these to the list of all the available line items.
+     */
     @Override
     public void createLineItems() {
         availableLineItems.add(MachineFactory.getInstance().createMachine(idCounter++, MachineType.SAW));
@@ -46,8 +57,8 @@ public class Factory1Builder implements Builder {
         availableLineItems.add(MachineFactory.getInstance().createMachine(idCounter++, MachineType.MILLER));
         availableLineItems.add(MachineFactory.getInstance().createMachine(idCounter++, MachineType.POLISHER));
         availableLineItems.add(MachineFactory.getInstance().createMachine(idCounter++, MachineType.SANDER));
-        availableLineItems.add(new Worker(idCounter++,"Machine tool operator"));
-        availableLineItems.add(new Worker(idCounter++,"Saw operator"));
+        availableLineItems.add(new Worker(idCounter++,"Operator"));
+        availableLineItems.add(new Worker(idCounter++,"Operator"));
         availableLineItems.add(new Worker(idCounter++,"Operator"));
         availableLineItems.add(new Worker(idCounter++,"Operator"));
         availableLineItems.add(new Worker(idCounter++,"Operator"));
@@ -55,17 +66,23 @@ public class Factory1Builder implements Builder {
         factory.reportItems(availableLineItems);
     }
 
+    /**
+     * Put some repairmen to the factory.
+     */
     @Override
     public void setRepairmen() {
         LinkedList<Repairman> repairmen = new LinkedList<>();
-        repairmen.add(new Repairman(1, true));
-        repairmen.add(new Repairman(2, true));
+        repairmen.add(new Repairman(1));
+        repairmen.add(new Repairman(2));
 //        repairmen.add(new Repairman(3, true));
 //        repairmen.add(new Repairman(4, true));
         RepairmenPool.getInstance().setAvailableRepairmen(repairmen);
         System.out.println("Available repairmen after initializing:" + RepairmenPool.getInstance().getAvailableRepairmen().toString());
     }
 
+    /**
+     * Starting simulation of the factory.
+     */
     @Override
     public void startTicking() {
         factory.startProduction();

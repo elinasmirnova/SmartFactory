@@ -1,5 +1,8 @@
 package impl.builder;
 
+/**
+ * Builder interface for factory configuration.
+ */
 public interface Builder {
     void createFactory();
 

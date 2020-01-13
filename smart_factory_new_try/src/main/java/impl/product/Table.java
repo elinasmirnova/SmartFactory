@@ -6,6 +6,7 @@ public class Table extends Product  {
     private final int id = 2;
     private final String name = "Table";
     private final int material = 3;
+    /** Quantity of tables per one batch */
     private final int unitsPerTick = 2;
     private final ProductEnum type = ProductEnum.TABLE;
 

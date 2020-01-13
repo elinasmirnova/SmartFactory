@@ -15,14 +15,12 @@ import impl.visitor.Visitor;
 import java.util.List;
 
 public abstract class LineItem implements Observer, Entity {
-    private int typeId;
     private int id;
     private String name;
     private Tick tick = Tick.getInstance();
     private LineItem nextLineItem;
     private boolean isStarting;
     private Line line;
-    List<Event> history;
     private EventHandler eventHandler = EventHandler.getInstance();
 
     public LineItem(int id, String name) {
@@ -41,6 +39,10 @@ public abstract class LineItem implements Observer, Entity {
         this.id = id;
     }
 
+    /**
+     * Method of updating every tick, where must be checked current states of the machines.
+     * Also this method starts the chain of the line items.
+     */
     public void update() {
         if (this instanceof Machine) {
             if (((Machine) this).getState().equals(MachineState.UNDER_REPAIR)) {

@@ -3,7 +3,9 @@ package impl.lineItems;
 import impl.Constants;
 
 public class Polisher extends Machine {
+    /** oil consumption */
     private final int oil = 1;
+    /** electricity consumption */
     private final int ec = 2;
     private final String type = "POLISHER";
 

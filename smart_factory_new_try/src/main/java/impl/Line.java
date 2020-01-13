@@ -2,26 +2,32 @@ package impl;
 
 import impl.enums.MachineState;
 import impl.enums.ProductEnum;
-import impl.events.Event;
-import impl.events.EventHandler;
 import impl.lineItems.LineItem;
 import impl.lineItems.Machine;
+import impl.memento.MachineStateOriginator;
 import impl.product.Product;
 import impl.visitor.Visitor;
 
+
 import java.util.*;
+
+import java.util.logging.Logger;
 import java.util.stream.Collectors;
 
+/**
+ * The line entity, which implements observer (tick) interface and entity (visitor) interface.
+ */
 public class Line implements Observer, Entity{
     private Factory factory;
     private int id;
     private List<LineItem> workingItems = new ArrayList<>();
-    private EventHandler handler = EventHandler.getInstance();
     private Tick tick = Tick.getInstance();
-   // private MachineStateHistory history = MachineStateHistory.getInstance();
+    private MachineStateOriginator history = MachineStateOriginator.getInstance();
     private ProductEnum productType;
     private boolean isWorking = true;
     private Product product;
+
+    private static final Logger LOG = Logger.getLogger("LOGGER");
 
     public Line(Factory factory, int id, Product product) {
         this.factory = factory;
@@ -31,10 +37,21 @@ public class Line implements Observer, Entity{
         tick.attach(this);
     }
 
-    public void setLineItems(ProductEnum type) {
-        System.out.println("Setting machines and workers to line...");
-        type.getLineItemSequence().forEach(i -> workingItems.add(findMatchingAvailableLineItem(factory.getAvailableLineItems(), i)));
-        this.orderLineItems(); //TODO: hodit vyjimku, kdyz se nepodarilo nastavit linu
+    /**
+     * Setting line items by the product
+     * @param product
+     */
+    public void setLineItems(Product product) {
+        this.product = product;
+        this.productType = product.getType();
+        LOG.info("Setting machines and workers to line...");
+        try {
+            productType.getLineItemSequence().forEach(i -> workingItems.add(findMatchingAvailableLineItem(factory.getAvailableLineItems(), i)));
+            this.orderLineItems();
+        } catch (Exception e) {
+            LOG.warning("There are no available line items to set a new line");
+            System.exit(0);
+        }
 
     }
 
@@ -46,10 +63,12 @@ public class Line implements Observer, Entity{
         return item;
     }
 
+    /**
+     * Ordering line items
+     */
     private void orderLineItems() {
         LineItem next = null;
         Iterator<LineItem> iter = workingItems.iterator();
-       // workingItems.get(0).setStarting(true);
         for (LineItem item: workingItems) {
             tick.attach(item);
             item.setLine(this);
@@ -64,14 +83,22 @@ public class Line implements Observer, Entity{
 
     }
 
-    public void reorderLineItems(ProductEnum type) {
-        System.out.println("Got the request for a new batch of products");
+    /**
+     * Reorder line items, if the product was changed.
+     * @param product
+     */
+    public void reorderLineItems(Product product) {
+        LOG.info("Got the request for a new batch of products");
         workingItems.forEach(i -> tick.detach(i));
-        factory.getAvailableLineItems().addAll(workingItems);
-        workingItems.clear();//return working items to available line items list
-        this.setLineItems(type);
+        factory.getAvailableLineItems().addAll(workingItems); //return working items to available line items list
+        workingItems.clear();
+        this.setLineItems(product);
     }
 
+    /**
+     * Get machines from working line items on the line
+     * @return list of machines
+     */
     public List<Machine> getMachines() {
         List<Machine> machines = new ArrayList<Machine>();
         for (LineItem item : getWorkingItems()) {
@@ -94,15 +121,18 @@ public class Line implements Observer, Entity{
         return machines;
     }
 
+    /**
+     * Updating every tick and saving machines states.
+     * Checks if all the working machines have state WORKING,
+     * then set "starting" on the first machine of the working items.
+     *  Afterward on this machine will be started all the chain of line items.
+     */
     @Override
     public void update() {
         if (checkIfAllMachinesAreWorking()) {
             workingItems.get(0).setStarting(true);
         }
-        if (tick.getCurrentTick() != 1) {
-            factory.addProductUnits(product);
-        }
-        //history.saveMachineStates(getMachines());
+        history.saveMachineStates(getMachines());
     }
 
     public boolean checkIfAllMachinesAreWorking() {

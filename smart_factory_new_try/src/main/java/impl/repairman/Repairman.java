@@ -8,9 +8,8 @@ public class Repairman {
     private boolean available;
     private Machine repairedMachine;
 
-    public Repairman(int id, boolean available){
+    public Repairman(int id) {
         this.id = id;
-        this.available = available;
     }
 
     public int getId() {
@@ -32,6 +31,11 @@ public class Repairman {
     public void setRepairedMachine(Machine repairedMachine) {
         this.repairedMachine = repairedMachine;
     }
+
+    /***
+     * simulate the start of the repair process
+     * @param machine the broken machine
+     */
 
     public void simulateFixing(Machine machine){
         repairedMachine = machine;

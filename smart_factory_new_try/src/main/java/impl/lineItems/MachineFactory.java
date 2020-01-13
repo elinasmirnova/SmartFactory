@@ -6,6 +6,12 @@ public class MachineFactory {
 
     private static MachineFactory instance = null;
 
+    /**
+     * Create new machine instance with Factory Method design patter
+     * @param id - new machine id
+     * @param type - type of the required machine. which we want to produce
+     * @return return new machine
+     */
     public Machine createMachine(int id, MachineType type) {
         if (type == MachineType.LATHE) {
             return new Lathe(id, "Lathe");
@@ -21,6 +27,10 @@ public class MachineFactory {
         return null;
     }
 
+    /**
+     * Get an instance of MachineFactory class, which is a Singleton
+     * @return existing MachineFactory class
+     */
     public static MachineFactory getInstance() {
         if (instance == null) {
             instance = new MachineFactory();

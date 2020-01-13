@@ -5,6 +5,7 @@ import impl.enums.ProductEnum;
 public class Wardrobe extends Product {
     private final int id = 3;
     private final String name = "Wardrobe";
+    /** Quantity of wardrobes per one batch */
     private final int unitsPerTick = 1;
     private final int material = 4;
     private final ProductEnum type = ProductEnum.WARDROBE;

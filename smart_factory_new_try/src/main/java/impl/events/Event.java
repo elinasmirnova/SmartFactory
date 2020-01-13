@@ -28,10 +28,6 @@ public abstract class Event {
         return tickStarted;
     }
 
-//    public String toString() {
-//        return "Event type: " + type + ". Time created: " + tickStarted;
-//    }
-
     public Machine getMachine() {
         return machine;
     }

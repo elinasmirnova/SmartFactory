@@ -29,7 +29,7 @@ public class RepairTest {
     public void before() {
         machine = new Polisher(id, name);
         machine.setCondition(20);
-        repairman = new Repairman(1, true);
+        repairman = new Repairman(1);
         repairmen.add(repairman);
         repairmenPool.setAvailableRepairmen(repairmen);
     }

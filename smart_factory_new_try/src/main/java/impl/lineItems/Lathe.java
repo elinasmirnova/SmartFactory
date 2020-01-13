@@ -3,7 +3,9 @@ package impl.lineItems;
 import impl.Constants;
 
 public class Lathe extends Machine {
+    /** oil consumption */
     private final int oil = 3;
+    /** electricity consumption */
     private final int ec = 3;
     private final int repairTime = 2;
     private final String type = "LATHE";
@@ -33,11 +35,6 @@ public class Lathe extends Machine {
     @Override
     public int getEc() {
         return ec;
-    }
-
-    @Override
-    public int getRepairTime() {
-        return repairTime;
     }
 
 }

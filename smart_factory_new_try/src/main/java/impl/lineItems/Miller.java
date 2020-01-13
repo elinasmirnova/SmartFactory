@@ -3,7 +3,9 @@ package impl.lineItems;
 import impl.Constants;
 
 public class Miller extends Machine {
+    /** oil consumption */
     private final int oil = 4;
+    /** electricity consumption */
     private final int ec = 2;
     private final String type = "MILLER";
 
