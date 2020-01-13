@@ -20,17 +20,17 @@ Stroje, lidi a produkty navštěvuje ředitel a inspektor. U těchto tříd je d
 * **Observer**
  
 
-REPAIR AND EVENTS
-how does it work?
+Eventy a oprava: jak to funguje?
 
-1. Machine's state changes from NORMAL to BROKEN
-2. Machine adds event BREAKDOWN to eventList
-3. Event handler gets the event from eventList and adds the broken machine from the event to the machineQueue
-4. Repair handler gets the broken machine from the machineQueue, calls for an available repairman and starts the repair process
-5. Machine's state changes from BROKEN  to UNDER REPAIR
-5. When the state changes, an event START REPAIR is called
-6. Event handler gets the START REPAIR event 
-7. After several ticks (the number of ticks needed to fix the machine) fixes the machine (health = 100)
-8. Machine's state changes from UNDER REPAIR to NORMAL
-9. Event handler gets the FINISH REPAIR event 
+1. Stav stroje se mění z NORMAL do BROKEN
+2. Posílá se event BREAKDOWN
+3. Event handler přidává event BREAKDOWN do eventQueue
+4. Event handler bere event z eventListu a přidává rozbitý stroj do machineQueue
+5. Repair handler bere rozbitý stroj z machineQueue, volá dostupného opraváře a začíná opravu
+6. Stav stroje se mění z BROKEN do UNDER REPAIR
+7. Posílá se event START REPAIR
+8. Event handler dostává START REPAIR event 
+9. Po několika taktech (počet taktů pro opravu stroje) se stroj opraví (health = 100)
+10. Stav stroje se mění z UNDER REPAIR do NORMAL
+11. Event handler dostává FINISH REPAIR event 
 
